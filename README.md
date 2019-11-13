@@ -17,22 +17,31 @@ $ yarn add @trbl/react-collapsibles
 ### Compositon
 
 ```jsx
-  <Collapsible clickableNode={<p>Click to open</p>}>
-    ...
-  </Collapsible>
-  <CollapsibleGroup
-    allowMultiple={false}
-    collapsibles={[
-      {
-        clickableNode: <p>Click to open</p>,
-        children: <p>this</p>,
-      },
-      {
-        clickableNode: <p>Or click to open</p>,
-        children: <p>this instead</p>,
-      },
-    ]}
-  />
+  import React from 'react';
+  import { Collapsible, CollapsibleGroup } from '@trbl/react-collapsibles';
+
+  const App = () => {
+    return (
+      <Collapsible clickableNode={<p>Click to open</p>}>
+        ...
+      </Collapsible>
+      <CollapsibleGroup
+        allowMultiple={false}
+        collapsibles={[
+          {
+            clickableNode: <p>Click to open</p>,
+            children: <p>this</p>,
+          },
+          {
+            clickableNode: <p>Or click to open</p>,
+            children: <p>this instead</p>,
+          },
+        ]}
+      />
+    )
+  }
+
+  export default App;
 ```
 
 ## Demo
