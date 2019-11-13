@@ -1,0 +1,57 @@
+[![NPM](https://img.shields.io/npm/v/@trbl/react-collapsibles)](https://www.npmjs.com/@trbl/react-collapsibles)
+![Bundle Size](https://img.shields.io/bundlephobia/minzip/@trbl/react-collapsibles?label=zipped)
+[![Supported by TRBL](https://img.shields.io/badge/supported_by-TRBL-black)](https://github.com/trouble)
+
+# React Collapsibles
+
+Now you see it, now you don't.
+
+## Quick Start
+
+### Installation
+
+```bash
+$ yarn add @trbl/react-collapsibles
+```
+
+### Compositon
+
+```jsx
+  <Collapsible clickableNode={<p>Click to open</p>}>
+    ...
+  </Collapsible>
+  <CollapsibleGroup
+    allowMultiple={false}
+    collapsibles={[
+      {
+        clickableNode: <p>Click to open</p>,
+        children: <p>this</p>,
+      },
+      {
+        clickableNode: <p>Or click to open</p>,
+        children: <p>this instead</p>,
+      },
+    ]}
+  />
+```
+
+## Demo
+
+To demo locally, clone the repo and
+
+```bash
+$ yarn install
+$ npm run dev
+$ open http://localhost:3000
+```
+
+## Documentation
+
+All available props can be found via the references below:
+
+  - [Collapsible](/src/Collapsible/README.md)
+  - [CollapsibleGroup](/src/CollapsibleGroup/README.md)
+
+## License
+
+[MIT](https://github.com/trouble/react-collapsibles/blob/master/LICENSE) Copyright (c) TRBL, LLC
