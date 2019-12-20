@@ -61,6 +61,10 @@ All available props can be found via the references below:
   - [Collapsible](/src/Collapsible/README.md)
   - [CollapsibleGroup](/src/CollapsibleGroup/README.md)
 
+## Contribution
+
+[Help us,](https://github.com/trouble/.github/blob/master/CONTRIBUTING.md) or let us [help you help us](https://github.com/trouble/.github/blob/master/SUPPORT.md).
+
 ## License
 
 [MIT](https://github.com/trouble/react-collapsibles/blob/master/LICENSE) Copyright (c) TRBL, LLC
