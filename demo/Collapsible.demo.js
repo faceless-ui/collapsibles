@@ -1,60 +1,58 @@
 import React, { Fragment } from 'react';
 import { Collapsible } from '../src'; // swap '../src' for '../dist/build.bundle' to test production
 
-const CollapsibleDemo = () => {
-  return (
-    <Fragment>
-      <code>
-        <pre>
-          {'<Collapsible />'}
-          <br />
+const CollapsibleDemo = () => (
+  <Fragment>
+    <code>
+      <pre>
+        {'<Collapsible />'}
+        <br />
           Props:
-          <br />
+        <br />
           openOnInit: true
-          <br />
+        <br />
           transTime: undefined
-          <br />
+        <br />
           transCurve: undefined
-        </pre>
-      </code>
-      <Collapsible
-        classPrefix="custom"
-        clickableNode={<span>click me</span>}
-        openOnInit
-      >
-        <span>to collapse content</span>
-      </Collapsible>
+      </pre>
+    </code>
+    <Collapsible
+      classPrefix="custom"
+      clickableNode={<span>click me</span>}
+      openOnInit
+    >
+      <span>to collapse content</span>
+    </Collapsible>
 
-      <div style={{ height: '50px' }} />
+    <div style={{ height: '50px' }} />
 
-      <code>
-        <pre>
-          {'<Collapsible />'}
-          <br />
+    <code>
+      <pre>
+        {'<Collapsible />'}
+        <br />
           Props:
-          <br />
+        <br />
           openOnInit: false
-          <br />
+        <br />
           transTime: 2000
-          <br />
+        <br />
           transCurve: &ldquo;cubic-bezier(0, 0, 0.2, 1)&rdquo;
-          <br />
+        <br />
           disableClick: true
-        </pre>
-      </code>
-      <Collapsible
-        transTime={2000}
-        transCurve="cubic-bezier(0, 0, 0.2, 1)"
-        clickableNode={<span>click me (click disabled)</span>}
-        disableClick
-      >
-        <span>for some content</span>
-      </Collapsible>
+      </pre>
+    </code>
+    <Collapsible
+      transTime={2000}
+      transCurve="cubic-bezier(0, 0, 0.2, 1)"
+      clickableNode={<span>click me (click disabled)</span>}
+      disableClick
+    >
+      <span>for some content</span>
+    </Collapsible>
 
-      <div style={{ height: '50px' }} />
+    <div style={{ height: '50px' }} />
 
-    </Fragment>
-  );
-};
+  </Fragment>
+);
 
 export default CollapsibleDemo;

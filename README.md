@@ -14,7 +14,7 @@ Now you see it, now you don't.
 $ yarn add @trbl/react-collapsibles
 ```
 
-### Compositon
+### Composition
 
 ```jsx
   import React from 'react';
@@ -49,8 +49,8 @@ $ yarn add @trbl/react-collapsibles
 To demo locally, clone the repo and
 
 ```bash
-$ yarn install
-$ npm run dev
+$ yarn
+$ yarn dev
 $ open http://localhost:3000
 ```
 

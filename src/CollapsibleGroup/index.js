@@ -10,7 +10,7 @@ class CollapsibleGroup extends Component {
 
     const { collapsibles } = this.props;
     const openStates = collapsibles && collapsibles.length > 0
-      ? collapsibles.map(item => item.openOnInit || false)
+      ? collapsibles.map((item) => item.openOnInit || false)
       : [];
 
     this.state = { openStates };
@@ -45,9 +45,7 @@ class CollapsibleGroup extends Component {
 
     const { openStates } = this.state;
 
-    const oneIsOpen = openStates.some((state) => {
-      return state === true;
-    });
+    const oneIsOpen = openStates.some((state) => state === true);
 
     const baseClass = `${classPrefix || defaultClassPrefix}__collapsible-group`;
 
