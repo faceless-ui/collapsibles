@@ -58,8 +58,8 @@ $ open http://localhost:3000
 
 All available props can be found via the references below:
 
-  - [Collapsible](/src/Collapsible/README.md)
-  - [CollapsibleGroup](/src/CollapsibleGroup/README.md)
+  - [Collapsible](./src/Collapsible/README.md)
+  - [CollapsibleGroup](./src/CollapsibleGroup/README.md)
 
 ## Contribution
 

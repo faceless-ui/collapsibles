@@ -7,13 +7,13 @@ const CollapsibleDemo = () => (
       <pre>
         {'<Collapsible />'}
         <br />
-          Props:
+        Props:
         <br />
-          openOnInit: true
+        openOnInit: true
         <br />
-          transTime: undefined
+        transTime: undefined
         <br />
-          transCurve: undefined
+        transCurve: undefined
       </pre>
     </code>
     <Collapsible
@@ -30,15 +30,15 @@ const CollapsibleDemo = () => (
       <pre>
         {'<Collapsible />'}
         <br />
-          Props:
+        Props:
         <br />
-          openOnInit: false
+        openOnInit: false
         <br />
-          transTime: 2000
+        transTime: 2000
         <br />
-          transCurve: &ldquo;cubic-bezier(0, 0, 0.2, 1)&rdquo;
+        transCurve: &ldquo;cubic-bezier(0, 0, 0.2, 1)&rdquo;
         <br />
-          disableClick: true
+        disableClick: true
       </pre>
     </code>
     <Collapsible

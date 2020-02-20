@@ -7,11 +7,11 @@ const CollapsibleGroupDemo = () => (
       <pre>
         {'<CollapsibleGroup />'}
         <br />
-          Props:
+        Props:
         <br />
-          allowMultiple: true
+        allowMultiple: true
         <br />
-          collapsibles: array
+        collapsibles: array
       </pre>
     </code>
     <CollapsibleGroup
@@ -38,11 +38,11 @@ const CollapsibleGroupDemo = () => (
       <pre>
         {'<CollapsibleGroup />'}
         <br />
-          Props:
+        Props:
         <br />
-          allowMultiple: false
+        allowMultiple: false
         <br />
-          collapsibles: array
+        collapsibles: array
       </pre>
     </code>
     <CollapsibleGroup
