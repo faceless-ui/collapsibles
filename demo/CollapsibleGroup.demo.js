@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { CollapsibleGroup } from '../src'; // swap '../src' for '../dist/build.bundle' to test production
+import { CollapsibleGroup, Collapsible } from '../src'; // swap '../src' for '../dist/build.bundle' to test production
 
 const CollapsibleGroupDemo = () => (
   <Fragment>
@@ -10,27 +10,27 @@ const CollapsibleGroupDemo = () => (
         Props:
         <br />
         allowMultiple: true
-        <br />
-        collapsibles: array
       </pre>
     </code>
     <CollapsibleGroup
-      allowMultiple
+      allowMultiple={false}
       classPrefix="custom"
-      collapsibles={[
-        {
-          openOnInit: true,
-          clickableNode: <span>click me (click disabled)</span>,
-          children: <span>4 some content</span>,
-          disableClick: true,
-        },
-        {
-          openOnInit: true,
-          clickableNode: <span>click me</span>,
-          children: <span>4 some content</span>,
-        },
-      ]}
-    />
+    >
+      <Collapsible
+        clickableNode={<span>click me (click disabled)</span>}
+        openOnInit
+        disableClick
+      >
+        <span>4 some content</span>
+      </Collapsible>
+
+      <Collapsible
+        clickableNode={<span>click me</span>}
+        openOnInit
+      >
+        <span>4 some content</span>
+      </Collapsible>
+    </CollapsibleGroup>
 
     <div style={{ height: '50px' }} />
 
@@ -41,27 +41,31 @@ const CollapsibleGroupDemo = () => (
         Props:
         <br />
         allowMultiple: false
-        <br />
-        collapsibles: array
       </pre>
     </code>
+
+
     <CollapsibleGroup
       allowMultiple={false}
       transTime={2000}
       transCurve="cubic-bezier(0, 0, 0.2, 1)"
-      collapsibles={[
-        {
-          openOnInit: true,
-          clickableNode: <span>click me</span>,
-          children: <span>4 some content</span>,
-        },
-        {
-          openOnInit: true,
-          clickableNode: <span>click me</span>,
-          children: <span>4 some content</span>,
-        },
-      ]}
-    />
+    >
+      <Collapsible
+        clickableNode={<span>click me</span>}
+        openOnInit
+      >
+        <span>4 some content</span>
+      </Collapsible>
+
+      <Collapsible
+        clickableNode={<span>click me</span>}
+        openOnInit
+      >
+        <span>4 some content</span>
+      </Collapsible>
+    </CollapsibleGroup>
+
+
   </Fragment>
 );
 

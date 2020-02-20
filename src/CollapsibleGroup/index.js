@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Collapsible, { CollapsiblePropTypes } from '../Collapsible';
 
 import defaultClassPrefix from '../defaultClassPrefix';
 
@@ -8,9 +7,9 @@ class CollapsibleGroup extends Component {
   constructor(props) {
     super(props);
 
-    const { collapsibles } = this.props;
-    const openStates = collapsibles && collapsibles.length > 0
-      ? collapsibles.map((item) => item.openOnInit || false)
+    const { children } = this.props;
+    const openStates = children && children.length > 0
+      ? children.map((item) => item.openOnInit || false)
       : [];
 
     this.state = { openStates };
@@ -36,11 +35,11 @@ class CollapsibleGroup extends Component {
   render() {
     const {
       className,
-      collapsibles,
       allowMultiple,
       transTime,
       transCurve,
       classPrefix,
+      children,
     } = this.props;
 
     const { openStates } = this.state;
@@ -55,40 +54,38 @@ class CollapsibleGroup extends Component {
       oneIsOpen && `${baseClass}--is-open`,
     ].filter(Boolean).join(' ');
 
-    if (collapsibles && collapsibles.length > 0) {
+    if (children && children.length > 0) {
       return (
         <div className={classes}>
-          {collapsibles.map((item, index) => {
-            const {
-              clickableNode,
-              children,
-              disableClick,
-            } = item;
+          {children.map((groupChild, index) => {
+            if (children[index].type.name === 'Collapsible') {
+              const {
+                clickableNode,
+                disableClick,
+              } = groupChild.props;
 
-            const open = openStates[index];
+              const open = openStates[index];
 
-            return (
-              <Collapsible
-                key={index}
-                clickableNode={clickableNode}
-                openOnInit={open}
-                controlManually={!allowMultiple}
-                onClick={!disableClick ? () => this.onClick(index) : undefined}
-                {...{
-                  open,
-                  transTime,
-                  transCurve,
-                  classPrefix,
-                  disableClick,
-                }}
-              >
-                {React.createElement(
-                  Fragment,
-                  {},
-                  children,
-                )}
-              </Collapsible>
-            );
+              return (
+                React.cloneElement(
+                  groupChild,
+                  {
+                    key: index,
+                    clickableNode,
+                    disableClick,
+                    openOnInit: open,
+                    controlManually: !allowMultiple,
+                    onClick: !disableClick ? () => this.onClick(index) : undefined,
+                    open,
+                    transTime,
+                    transCurve,
+                    classPrefix,
+                  },
+                )
+              );
+            }
+
+            return groupChild;
           })}
         </div>
       );
@@ -108,15 +105,10 @@ CollapsibleGroup.defaultProps = {
 CollapsibleGroup.propTypes = {
   className: PropTypes.string,
   allowMultiple: PropTypes.bool,
-  collapsibles: PropTypes.arrayOf(
-    PropTypes.shape({
-      ...CollapsiblePropTypes,
-      children: PropTypes.node,
-    }),
-  ).isRequired,
   transTime: PropTypes.number,
   transCurve: PropTypes.string,
   classPrefix: PropTypes.string,
+  children: PropTypes.node.isRequired,
 };
 
 export default CollapsibleGroup;
