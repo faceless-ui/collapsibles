@@ -5,66 +5,93 @@ const CollapsibleGroupDemo = () => (
   <Fragment>
     <code>
       <pre>
-        {'<CollapsibleGroup />'}
-        <br />
-        Props:
-        <br />
-        allowMultiple: true
+        {'<CollapsibleGroup'}
+        <ul style={{ listStyle: 'none' }}>
+          <li>
+            {'allowMultiple={true}'}
+          </li>
+        </ul>
+        {'>'}
       </pre>
     </code>
     <CollapsibleGroup
-      allowMultiple={false}
+      allowMultiple
       classPrefix="custom"
     >
       <Collapsible
-        clickableNode={<span>click me (click disabled)</span>}
-        openOnInit
-        disableClick
+        clickableNode={<span>{'<Collapsible />'}</span>}
       >
-        <span>4 some content</span>
+        <span>boop be bop</span>
       </Collapsible>
 
       <Collapsible
-        clickableNode={<span>click me</span>}
-        openOnInit
+        clickableNode={<span>{'<Collapsible />'}</span>}
       >
-        <span>4 some content</span>
+        <span>boop be bop</span>
+      </Collapsible>
+
+      <Collapsible
+        clickableNode={<span>{'<Collapsible />'}</span>}
+      >
+        <span>beep bot</span>
       </Collapsible>
     </CollapsibleGroup>
+    <code>
+      <pre>
+        {'</CollapsibleGroup>'}
+      </pre>
+    </code>
 
     <div style={{ height: '50px' }} />
 
     <code>
       <pre>
-        {'<CollapsibleGroup />'}
-        <br />
-        Props:
-        <br />
-        allowMultiple: false
+        {'<CollapsibleGroup'}
+        <ul style={{ listStyle: 'none' }}>
+          <li>
+            {'allowMultiple={false}'}
+          </li>
+          <br />
+          <li>
+            {'transTime={2000}'}
+          </li>
+          <br />
+          <li>
+            {'transCurve={"cubic-bezier(0, 0, 0.2, 1)"}'}
+          </li>
+        </ul>
+        {'>'}
       </pre>
     </code>
-
-
     <CollapsibleGroup
       allowMultiple={false}
       transTime={2000}
       transCurve="cubic-bezier(0, 0, 0.2, 1)"
     >
       <Collapsible
-        clickableNode={<span>click me</span>}
+        clickableNode={<span>{'<Collapsible />'}</span>}
         openOnInit
       >
-        <span>4 some content</span>
+        <span>boop be bop</span>
       </Collapsible>
-
       <Collapsible
-        clickableNode={<span>click me</span>}
+        clickableNode={<span>{'<Collapsible />'}</span>}
         openOnInit
       >
-        <span>4 some content</span>
+        <span>boop be bop</span>
+      </Collapsible>
+      <Collapsible
+        clickableNode={<span>{'<Collapsible />'}</span>}
+        openOnInit
+      >
+        <span>boop be bop</span>
       </Collapsible>
     </CollapsibleGroup>
-
+    <code>
+      <pre>
+        {'</CollapsibleGroup>'}
+      </pre>
+    </code>
 
   </Fragment>
 );

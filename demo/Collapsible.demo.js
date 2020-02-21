@@ -5,49 +5,41 @@ const CollapsibleDemo = () => (
   <Fragment>
     <code>
       <pre>
-        {'<Collapsible />'}
-        <br />
-        Props:
-        <br />
-        openOnInit: true
-        <br />
-        transTime: undefined
-        <br />
-        transCurve: undefined
+        {'<Collapsible'}
+        <ul style={{ listStyle: 'none' }}>
+          <li>
+            {'openOnInit={true}'}
+          </li>
+        </ul>
+        {'/>'}
       </pre>
     </code>
     <Collapsible
       classPrefix="custom"
-      clickableNode={<span>click me</span>}
+      clickableNode={<span>{'<Collapsible />'}</span>}
       openOnInit
     >
-      <span>to collapse content</span>
+      <span>beep bop robots</span>
     </Collapsible>
 
     <div style={{ height: '50px' }} />
 
     <code>
       <pre>
-        {'<Collapsible />'}
-        <br />
-        Props:
-        <br />
-        openOnInit: false
-        <br />
-        transTime: 2000
-        <br />
-        transCurve: &ldquo;cubic-bezier(0, 0, 0.2, 1)&rdquo;
-        <br />
-        disableClick: true
+        {'<Collapsible'}
+        <ul style={{ listStyle: 'none' }}>
+          <li>
+            {'disableClick={true}'}
+          </li>
+        </ul>
+        {'/>'}
       </pre>
     </code>
     <Collapsible
-      transTime={2000}
-      transCurve="cubic-bezier(0, 0, 0.2, 1)"
-      clickableNode={<span>click me (click disabled)</span>}
+      clickableNode={<span>{'<Collapsible disableClick />'}</span>}
       disableClick
     >
-      <span>for some content</span>
+      <span>beep bop robots</span>
     </Collapsible>
 
     <div style={{ height: '50px' }} />

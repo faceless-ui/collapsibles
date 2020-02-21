@@ -7,9 +7,19 @@ class CollapsibleGroup extends Component {
   constructor(props) {
     super(props);
 
-    const { children } = this.props;
-    const openStates = children && children.length > 0
-      ? children.map((item) => item.openOnInit || false)
+    const { children, allowMultiple } = this.props;
+    const childrenAsArray = React.Children.toArray(children);
+    let oneIsOpen = false;
+    const openStates = childrenAsArray && childrenAsArray.length > 0
+      ? childrenAsArray.map((item) => {
+        let startOpen = false;
+        if (allowMultiple) startOpen = item.props.openOnInit;
+        if (!oneIsOpen && item.props.openOnInit) {
+          oneIsOpen = true;
+          startOpen = true;
+        }
+        return startOpen;
+      })
       : [];
 
     this.state = { openStates };
@@ -54,21 +64,22 @@ class CollapsibleGroup extends Component {
       oneIsOpen && `${baseClass}--is-open`,
     ].filter(Boolean).join(' ');
 
-    if (children && children.length > 0) {
+    const childrenAsArray = React.Children.toArray(children);
+    if (childrenAsArray && childrenAsArray.length > 0) {
       return (
         <div className={classes}>
-          {children.map((groupChild, index) => {
-            if (children[index].type.name === 'Collapsible') {
+          {childrenAsArray.map((collapsible, index) => {
+            if (childrenAsArray[index].type.name === 'Collapsible') {
               const {
                 clickableNode,
                 disableClick,
-              } = groupChild.props;
+              } = collapsible.props;
 
               const open = openStates[index];
 
               return (
                 React.cloneElement(
-                  groupChild,
+                  collapsible,
                   {
                     key: index,
                     clickableNode,
@@ -85,7 +96,7 @@ class CollapsibleGroup extends Component {
               );
             }
 
-            return groupChild;
+            return collapsible;
           })}
         </div>
       );
@@ -108,7 +119,10 @@ CollapsibleGroup.propTypes = {
   transTime: PropTypes.number,
   transCurve: PropTypes.string,
   classPrefix: PropTypes.string,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
 
 export default CollapsibleGroup;

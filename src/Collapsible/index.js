@@ -72,6 +72,7 @@ class Collapsible extends Component {
               style: {
                 marginBottom: 0,
               },
+              className: `${baseClass}__clickable-node`,
             },
           )}
           <AnimateHeight
