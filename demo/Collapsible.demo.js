@@ -1,49 +1,25 @@
 import React, { Fragment } from 'react';
-import { Collapsible } from '../src'; // swap '../src' for '../dist/build.bundle' to test production
+import { Collapsible, CollapsibleToggler, CollapsibleContent } from '../src'; // swap '../src' for '../dist/build.bundle' to test production
 
 const CollapsibleDemo = () => (
   <Fragment>
-    <code>
-      <pre>
-        {'<Collapsible'}
-        <ul style={{ listStyle: 'none' }}>
-          <li>
-            {'openOnInit={true}'}
-          </li>
-        </ul>
-        {'/>'}
-      </pre>
-    </code>
     <Collapsible
-      classPrefix="custom"
-      clickableNode={<span>{'<Collapsible />'}</span>}
+      transTime={250}
+      onClick={() => console.log('hi collapsible')} // eslint-disable-line no-console
+      classPrefix="demo"
       openOnInit
     >
-      <span>beep bop robots</span>
+      <CollapsibleToggler
+        htmlAttributes={{
+          onClick: () => console.log('hi toggler'), // eslint-disable-line no-console
+        }}
+      >
+        Click me!
+      </CollapsibleToggler>
+      <CollapsibleContent>
+        Lorem ipsum
+      </CollapsibleContent>
     </Collapsible>
-
-    <div style={{ height: '50px' }} />
-
-    <code>
-      <pre>
-        {'<Collapsible'}
-        <ul style={{ listStyle: 'none' }}>
-          <li>
-            {'disableClick={true}'}
-          </li>
-        </ul>
-        {'/>'}
-      </pre>
-    </code>
-    <Collapsible
-      clickableNode={<span>{'<Collapsible disableClick />'}</span>}
-      disableClick
-    >
-      <span>beep bop robots</span>
-    </Collapsible>
-
-    <div style={{ height: '50px' }} />
-
   </Fragment>
 );
 

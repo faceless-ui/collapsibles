@@ -1,128 +1,61 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import AnimateHeight from 'react-animate-height';
-
 import defaultClassPrefix from '../defaultClassPrefix';
 
-class Collapsible extends Component {
-  constructor(props) {
-    super(props);
-    const { openOnInit } = props;
-    this.state = { open: openOnInit };
-  }
+import { CollapsibleContext } from './context';
+import { useCollapsibleGroup } from '../CollapsibleGroup/context';
 
-  componentDidUpdate(prevProps) {
-    const { controlManually } = this.props;
+const Collapsible = (props) => {
+  const {
+    openOnInit,
+    transTime,
+    transCurve,
+    classPrefix,
+    children,
+    onClick,
+  } = props;
 
-    if (controlManually) {
-      const { open } = this.props;
+  const { classPrefix: groupClassPrefix } = useCollapsibleGroup();
+  const rootClass = `${classPrefix || groupClassPrefix || defaultClassPrefix}__collapsible`;
 
-      if (prevProps.open !== open) {
-        this.setState({ open });
-      }
-    }
-  }
+  const [isOpen, setIsOpen] = useState(openOnInit);
 
-  toggle = () => {
-    const {
-      controlManually,
-      onClick,
-    } = this.props;
-
-    if (!controlManually) {
-      const { open } = this.state;
-      this.setState({ open: !open });
-    }
-
+  const handleClick = () => {
+    setIsOpen(!isOpen);
     if (typeof onClick === 'function') onClick();
-  }
+  };
 
-  render() {
-    const {
-      id,
-      className,
-      children,
-      clickableNode,
-      transTime,
-      transCurve,
-      classPrefix,
-      disableClick,
-    } = this.props;
-
-    const { open } = this.state;
-    const baseClass = `${classPrefix || defaultClassPrefix}__collapsible`;
-
-    const classes = [
-      className,
-      baseClass,
-      open && `${baseClass}--is-open`,
-      disableClick && `${baseClass}--click-disabled`,
-    ].filter(Boolean).join(' ');
-
-    if (clickableNode && children) {
-      return (
-        <div
-          className={classes}
-          {...{ id }}
-        >
-          {React.cloneElement(
-            clickableNode,
-            {
-              onClick: !disableClick ? this.toggle : null,
-              style: {
-                marginBottom: 0,
-              },
-              className: `${baseClass}__clickable-node`,
-            },
-          )}
-          <AnimateHeight
-            height={open ? 'auto' : 0}
-            easing={transCurve}
-            duration={transTime}
-          >
-            {children}
-          </AnimateHeight>
-        </div>
-      );
-    }
-    return null;
-  }
-}
-
-export const CollapsibleDefaultProps = {
-  id: '',
-  className: '',
-  openOnInit: false,
-  disableClick: false,
-};
-
-export const CollapsiblePropTypes = {
-  clickableNode: PropTypes.node.isRequired,
-  id: PropTypes.string,
-  className: PropTypes.string,
-  openOnInit: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-  disableClick: PropTypes.bool,
+  return (
+    <CollapsibleContext.Provider
+      value={{
+        isOpen,
+        handleClick,
+        rootClass,
+        transTime,
+        transCurve,
+      }}
+    >
+      {children && children}
+    </CollapsibleContext.Provider>
+  );
 };
 
 Collapsible.defaultProps = {
-  ...CollapsibleDefaultProps,
-  onClick: undefined,
-  open: false,
-  transTime: 250,
-  transCurve: 'linear',
-  controlManually: false,
   classPrefix: '',
+  openOnInit: false,
+  onClick: undefined,
+  transTime: 0,
+  transCurve: 'linear',
+  children: undefined,
 };
 
 Collapsible.propTypes = {
-  ...CollapsiblePropTypes,
+  classPrefix: PropTypes.string,
+  openOnInit: PropTypes.bool,
   onClick: PropTypes.func,
-  open: PropTypes.bool,
   transTime: PropTypes.number,
   transCurve: PropTypes.string,
-  controlManually: PropTypes.bool,
-  classPrefix: PropTypes.string,
+  children: PropTypes.node,
 };
 
 export default Collapsible;
