@@ -41,8 +41,8 @@ const CollapsibleContent = (props) => {
     >
       <AnimateHeight
         height={isOpen ? 'auto' : 0}
-        easing={transCurve}
-        duration={transTime}
+        easing={transCurve || 'linear'}
+        duration={transTime || 0}
       >
         {children && children}
       </AnimateHeight>

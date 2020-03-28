@@ -1,53 +1,33 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { CollapsibleGroupContext } from './context';
+import CollapsibleGroupContext from './context';
 
-import defaultClassPrefix from '../defaultClassPrefix';
+const CollapsibleGroup = (props) => {
+  const [toggleCount, setToggleCount] = useState(0);
 
-class CollapsibleGroup extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  const {
+    transTime,
+    transCurve,
+    classPrefix,
+    allowMultiple,
+    children,
+  } = props;
 
-  onClick = (indexOfClicked) => {
-    const { allowMultiple } = this.props;
-    const { openStates } = this.state;
-
-    if (!allowMultiple) {
-      const modifiedOpenStates = openStates.map((state, index) => {
-        if (index !== indexOfClicked) return false;
-        return !state;
-      });
-      this.setState({ openStates: modifiedOpenStates });
-    } else {
-      const newState = [...openStates];
-      newState[indexOfClicked] = !openStates[indexOfClicked];
-      this.setState({ openStates: newState });
-    }
-  };
-
-  render() {
-    const {
-      transTime,
-      transCurve,
-      classPrefix,
-      children,
-    } = this.props;
-
-    return (
-      <CollapsibleGroupContext.Provider
-        value={{
-          transTime,
-          transCurve,
-          classPrefix: classPrefix || defaultClassPrefix,
-        }}
-      >
-        {children && children}
-      </CollapsibleGroupContext.Provider>
-    );
-  }
-}
+  return (
+    <CollapsibleGroupContext.Provider
+      value={{
+        transTime,
+        transCurve,
+        classPrefix,
+        allowMultiple,
+        reportToggleToGroup: () => setToggleCount(toggleCount + 1),
+        toggleCount,
+      }}
+    >
+      {children && children}
+    </CollapsibleGroupContext.Provider>
+  );
+};
 
 CollapsibleGroup.defaultProps = {
   classPrefix: undefined,

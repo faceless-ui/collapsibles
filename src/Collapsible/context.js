@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 
-export const CollapsibleContext = React.createContext({});
+const CollapsibleContext = React.createContext({});
+
+export default CollapsibleContext;
 
 export const useCollapsible = () => useContext(CollapsibleContext);
