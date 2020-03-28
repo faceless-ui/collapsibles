@@ -1,56 +1,67 @@
 import React, { Fragment } from 'react';
-import { Collapsible } from '../src'; // swap '../src' for '../dist/build.bundle' to test production
+import { Collapsible, CollapsibleToggler, CollapsibleContent } from '../src'; // swap '../src' for '../dist/build.bundle' to test production
+import PrintContext from './PrintContext';
+import Background from './Background';
 
 const CollapsibleDemo = () => (
   <Fragment>
-    <code>
-      <pre>
-        {'<Collapsible />'}
-        <br />
-        Props:
-        <br />
-        openOnInit: true
-        <br />
-        transTime: undefined
-        <br />
-        transCurve: undefined
-      </pre>
-    </code>
-    <Collapsible
-      classPrefix="custom"
-      clickableNode={<span>click me</span>}
-      openOnInit
-    >
-      <span>to collapse content</span>
-    </Collapsible>
+    <Background>
+      <Collapsible>
+        <PrintContext context="collapsible" />
+        <CollapsibleToggler>
+          Collapsible Toggler
+        </CollapsibleToggler>
+        <CollapsibleContent>
+          Quiscras iam semper metusdo proin entum atein bibendu
+        </CollapsibleContent>
+      </Collapsible>
+    </Background>
 
-    <div style={{ height: '50px' }} />
-
-    <code>
-      <pre>
-        {'<Collapsible />'}
-        <br />
-        Props:
-        <br />
-        openOnInit: false
-        <br />
-        transTime: 2000
-        <br />
-        transCurve: &ldquo;cubic-bezier(0, 0, 0.2, 1)&rdquo;
-        <br />
-        disableClick: true
-      </pre>
-    </code>
-    <Collapsible
-      transTime={2000}
-      transCurve="cubic-bezier(0, 0, 0.2, 1)"
-      clickableNode={<span>click me (click disabled)</span>}
-      disableClick
-    >
-      <span>for some content</span>
-    </Collapsible>
-
-    <div style={{ height: '50px' }} />
+    <Background>
+      <Collapsible
+        transTime={250}
+        transCurve="ease-in"
+        onClick={() => console.log('hi collapsible')} // eslint-disable-line no-console
+        classPrefix="demo"
+        openOnInit
+      >
+        <PrintContext context="collapsible" />
+        <header>
+          <div>
+            <span>
+              <CollapsibleToggler
+                htmlAttributes={{
+                  onClick: () => console.log('hi toggler'), // eslint-disable-line no-console
+                }}
+              >
+                <span>
+                  <span>
+                    <span>
+                      Collapsible Toggler
+                    </span>
+                  </span>
+                </span>
+              </CollapsibleToggler>
+            </span>
+          </div>
+        </header>
+        <article>
+          <aside>
+            <div>
+              <CollapsibleContent>
+                <section>
+                  <div>
+                    <div>
+                      Liberom diampr ornare ris maurisma dictumst
+                    </div>
+                  </div>
+                </section>
+              </CollapsibleContent>
+            </div>
+          </aside>
+        </article>
+      </Collapsible>
+    </Background>
 
   </Fragment>
 );

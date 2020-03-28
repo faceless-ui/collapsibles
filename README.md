@@ -17,27 +17,21 @@ $ yarn add @trbl/react-collapsibles
 ### Composition
 
 ```jsx
-  import React from 'react';
-  import { Collapsible, CollapsibleGroup } from '@trbl/react-collapsibles';
+  import React, { Fragment } from 'react';
+  import { CollapsibleGroup, Collapsible, CollapsibleToggler, CollapsibleContent } from '@trbl/react-collapsibles';
 
   const App = () => {
     return (
-      <Collapsible clickableNode={<p>Click to open</p>}>
-        ...
-      </Collapsible>
-      <CollapsibleGroup
-        allowMultiple={false}
-        collapsibles={[
-          {
-            clickableNode: <p>Click to open</p>,
-            children: <p>this</p>,
-          },
-          {
-            clickableNode: <p>Or click to open</p>,
-            children: <p>this instead</p>,
-          },
-        ]}
-      />
+      <CollapsibleGroup>
+        <Collapsible>
+          <CollapsibleToggler>
+            ...
+          </CollapsibleToggler>
+          <CollapsibleContent>
+            ...
+          </CollapsibleContent>
+        </Collapsible>
+      </CollapsibleGroup>
     )
   }
 
@@ -59,7 +53,11 @@ $ open http://localhost:3000
 All available props can be found via the references below:
 
   - [Collapsible](./src/Collapsible/README.md)
+  - [CollapsibleContent](./src/CollapsibleContent/README.md)
   - [CollapsibleGroup](./src/CollapsibleGroup/README.md)
+  - [CollapsibleToggler](./src/CollapsibleToggler/README.md)
+  - [useCollapsible](./src/Collapsible/README.md)
+  - [useCollapsibleGroup](./src/CollapsibleGroup/README.md)
 
 ## Contribution
 

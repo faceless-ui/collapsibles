@@ -1,67 +1,56 @@
 import React, { Fragment } from 'react';
-import { CollapsibleGroup } from '../src'; // swap '../src' for '../dist/build.bundle' to test production
+import { CollapsibleGroup, Collapsible, CollapsibleToggler, CollapsibleContent } from '../src'; // swap '../src' for '../dist/build.bundle' to test production
+import PrintContext from './PrintContext';
+import Background from './Background';
 
 const CollapsibleGroupDemo = () => (
   <Fragment>
-    <code>
-      <pre>
-        {'<CollapsibleGroup />'}
-        <br />
-        Props:
-        <br />
-        allowMultiple: true
-        <br />
-        collapsibles: array
-      </pre>
-    </code>
-    <CollapsibleGroup
-      allowMultiple
-      classPrefix="custom"
-      collapsibles={[
-        {
-          openOnInit: true,
-          clickableNode: <span>click me (click disabled)</span>,
-          children: <span>4 some content</span>,
-          disableClick: true,
-        },
-        {
-          openOnInit: true,
-          clickableNode: <span>click me</span>,
-          children: <span>4 some content</span>,
-        },
-      ]}
-    />
-
-    <div style={{ height: '50px' }} />
-
-    <code>
-      <pre>
-        {'<CollapsibleGroup />'}
-        <br />
-        Props:
-        <br />
-        allowMultiple: false
-        <br />
-        collapsibles: array
-      </pre>
-    </code>
-    <CollapsibleGroup
-      allowMultiple={false}
-      transTime={2000}
-      transCurve="cubic-bezier(0, 0, 0.2, 1)"
-      collapsibles={[
-        {
-          openOnInit: true,
-          clickableNode: <span>click me</span>,
-          children: <span>4 some content</span>,
-        },
-        {
-          openOnInit: true,
-          clickableNode: <span>click me</span>,
-          children: <span>4 some content</span>,
-        },
-      ]}
-    />
+    <Background>
+      <CollapsibleGroup
+        transTime={1000}
+        transCurve="ease-in-out"
+        classPrefix="demo"
+      >
+        <PrintContext context="collapsibleGroup" />
+        <Background>
+          <Collapsible openOnInit>
+            <PrintContext context="collapsible" />
+            <CollapsibleToggler>
+              Collapsible Toggler
+            </CollapsibleToggler>
+            <CollapsibleContent>
+              Quiscras iam semper metusdo proin entum atein bibendu
+            </CollapsibleContent>
+          </Collapsible>
+        </Background>
+        <Background>
+          <Collapsible
+            transTime={0}
+            openOnInit
+            classPrefix="override"
+          >
+            <PrintContext context="collapsible" />
+            <CollapsibleToggler>
+              Collapsible Toggler
+            </CollapsibleToggler>
+            <CollapsibleContent>
+              Liberom diampr ornare ris maurisma dictumst
+            </CollapsibleContent>
+          </Collapsible>
+        </Background>
+        <Background>
+          <Collapsible openOnInit>
+            <PrintContext context="collapsible" />
+            <CollapsibleToggler>
+              Collapsible Toggler
+            </CollapsibleToggler>
+            <CollapsibleContent>
+              Nostra tellus sit vestib aenean ellus amus iquam ris pelle
+            </CollapsibleContent>
+          </Collapsible>
+        </Background>
+      </CollapsibleGroup>
+    </Background>
   </Fragment>
 );
 

@@ -1,127 +1,84 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import AnimateHeight from 'react-animate-height';
-
 import defaultClassPrefix from '../defaultClassPrefix';
+import CollapsibleContext from './context';
+import { useCollapsibleGroup } from '../CollapsibleGroup/context';
 
-class Collapsible extends Component {
-  constructor(props) {
-    super(props);
-    const { openOnInit } = props;
-    this.state = { open: openOnInit };
-  }
+const Collapsible = (props) => {
+  const {
+    openOnInit,
+    classPrefix,
+    transTime,
+    transCurve,
+    children,
+    onClick,
+  } = props;
 
-  componentDidUpdate(prevProps) {
-    const { controlManually } = this.props;
+  const [isOpen, setIsOpen] = useState(openOnInit);
+  const [ignoreGroupUpdate, setIgnoreGroupUpdate] = useState(false);
+  const [prevGroupToggleCount, setPrevGroupToggleCount] = useState(false);
 
-    if (controlManually) {
-      const { open } = this.props;
+  const {
+    reportToggleToGroup,
+    toggleCount: groupToggleCount,
+    classPrefix: groupClassPrefix,
+    transTime: groupTransTime,
+    transCurve: groupTransCurve,
+    allowMultiple,
+  } = useCollapsibleGroup();
 
-      if (prevProps.open !== open) {
-        this.setState({ open });
-      }
-    }
-  }
-
-  toggle = () => {
-    const {
-      controlManually,
-      onClick,
-    } = this.props;
-
-    if (!controlManually) {
-      const { open } = this.state;
-      this.setState({ open: !open });
-    }
-
+  const handleClick = () => {
+    if (!allowMultiple && reportToggleToGroup) {
+      setIgnoreGroupUpdate(true);
+      reportToggleToGroup();
+    } else setIsOpen(!isOpen);
     if (typeof onClick === 'function') onClick();
-  }
+  };
 
-  render() {
-    const {
-      id,
-      className,
-      children,
-      clickableNode,
-      transTime,
-      transCurve,
-      classPrefix,
-      disableClick,
-    } = this.props;
-
-    const { open } = this.state;
-    const baseClass = `${classPrefix || defaultClassPrefix}__collapsible`;
-
-    const classes = [
-      className,
-      baseClass,
-      open && `${baseClass}--is-open`,
-      disableClick && `${baseClass}--click-disabled`,
-    ].filter(Boolean).join(' ');
-
-    if (clickableNode && children) {
-      return (
-        <div
-          className={classes}
-          {...{ id }}
-        >
-          {React.cloneElement(
-            clickableNode,
-            {
-              onClick: !disableClick ? this.toggle : null,
-              style: {
-                marginBottom: 0,
-              },
-            },
-          )}
-          <AnimateHeight
-            height={open ? 'auto' : 0}
-            easing={transCurve}
-            duration={transTime}
-          >
-            {children}
-          </AnimateHeight>
-        </div>
-      );
+  useEffect(() => {
+    if (groupToggleCount > prevGroupToggleCount) {
+      if (!ignoreGroupUpdate) setIsOpen(false);
+      else {
+        setIgnoreGroupUpdate(false);
+        setIsOpen(!isOpen);
+      }
+      setPrevGroupToggleCount(groupToggleCount);
     }
-    return null;
-  }
-}
+  }, [groupToggleCount, prevGroupToggleCount, isOpen, ignoreGroupUpdate]);
 
-export const CollapsibleDefaultProps = {
-  id: '',
-  className: '',
-  openOnInit: false,
-  disableClick: false,
-};
-
-export const CollapsiblePropTypes = {
-  clickableNode: PropTypes.node.isRequired,
-  id: PropTypes.string,
-  className: PropTypes.string,
-  openOnInit: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-  disableClick: PropTypes.bool,
+  return (
+    <CollapsibleContext.Provider
+      value={{
+        classPrefix,
+        rootClass: `${classPrefix || groupClassPrefix || defaultClassPrefix}__collapsible`,
+        openOnInit,
+        isOpen,
+        handleClick,
+        transTime: typeof transTime === 'number' ? transTime : groupTransTime,
+        transCurve: transCurve || groupTransCurve,
+      }}
+    >
+      {children && children}
+    </CollapsibleContext.Provider>
+  );
 };
 
 Collapsible.defaultProps = {
-  ...CollapsibleDefaultProps,
-  onClick: undefined,
-  open: false,
-  transTime: 250,
-  transCurve: 'linear',
-  controlManually: false,
   classPrefix: '',
+  openOnInit: false,
+  onClick: undefined,
+  transTime: undefined,
+  transCurve: undefined,
+  children: undefined,
 };
 
 Collapsible.propTypes = {
-  ...CollapsiblePropTypes,
+  classPrefix: PropTypes.string,
+  openOnInit: PropTypes.bool,
   onClick: PropTypes.func,
-  open: PropTypes.bool,
   transTime: PropTypes.number,
   transCurve: PropTypes.string,
-  controlManually: PropTypes.bool,
-  classPrefix: PropTypes.string,
+  children: PropTypes.node,
 };
 
 export default Collapsible;
