@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useCollapsible, useCollapsibleGroup } from '../src';
+import LogProps from './LogProps';
 
 const PrintContext = (props) => {
   const { context } = props;
@@ -12,14 +13,7 @@ const PrintContext = (props) => {
   if (context === 'collapsible') contextToPrint = collapsibleContext;
   if (context === 'collapsibleGroup') contextToPrint = collapsibleGroupContext;
 
-  return (
-    <code>
-      <pre style={{ margin: '0 0 20px' }}>
-        {`${context}:`}
-        {JSON.stringify(contextToPrint, (k, v) => (v === undefined ? 'undefined' : v), 2)}
-      </pre>
-    </code>
-  );
+  return <LogProps {...contextToPrint} />;
 };
 
 PrintContext.defaultProps = {

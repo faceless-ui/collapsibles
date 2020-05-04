@@ -26,7 +26,7 @@ Expand and collapse anything, or groups of anything. Accordions, drop-downs, sho
 
 ```bash
 $ npm i @trbl/react-collapsibles
-$ // or
+$ # or
 $ yarn add @trbl/react-collapsibles
 ```
 
@@ -56,6 +56,8 @@ $ yarn add @trbl/react-collapsibles
 
   export default App;
 ```
+
+For working examples, see the [demo app](./demo/App.demo.js).
 
 ## Demo
 
