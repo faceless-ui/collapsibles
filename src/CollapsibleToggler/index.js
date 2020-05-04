@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import HTMLElement from '@trbl/react-html-element';
+import { CSSTransition } from 'react-transition-group';
 import { useCollapsible } from '../Collapsible/context';
 
 const CollapsibleToggler = (props) => {
@@ -10,7 +11,7 @@ const CollapsibleToggler = (props) => {
     style,
     htmlElement,
     htmlAttributes,
-    disableClick,
+    disable,
     children,
   } = props;
 
@@ -18,6 +19,7 @@ const CollapsibleToggler = (props) => {
     rootClass,
     handleClick,
     isOpen,
+    transTime,
   } = useCollapsible();
 
   const baseClass = `${rootClass}__toggler`;
@@ -25,44 +27,62 @@ const CollapsibleToggler = (props) => {
   const mergedClasses = [
     baseClass,
     isOpen && `${baseClass}--is-open`,
-    disableClick && `${baseClass}--click-disabled`,
+    disable && `${baseClass}--is-disabled`,
     className,
   ].filter(Boolean).join(' ');
 
   const mergedAttributes = {
     ...htmlAttributes,
     onClick: () => {
-      if (!disableClick) handleClick();
+      if (!disable) handleClick();
       if (typeof htmlAttributes.onClick === 'function') htmlAttributes.onClick();
     },
   };
 
   return (
-    <HTMLElement
-      {...{
-        id,
-        className: mergedClasses,
-        style,
-        htmlElement,
-        htmlAttributes: mergedAttributes,
+    <CSSTransition
+      timeout={transTime}
+      in={isOpen}
+      classNames={{
+        appear: `${baseClass}--appear`,
+        appearActive: `${baseClass}--appearActive`,
+        appearDone: `${baseClass}--appearDone`,
+        enter: `${baseClass}--enter`,
+        enterActive: `${baseClass}--enterActive`,
+        enterDone: `${baseClass}--enterDone`,
+        exit: `${baseClass}--exit`,
+        exitActive: `${baseClass}--exitActive`,
+        exitDone: `${baseClass}--exitDone`,
       }}
     >
-      {children && children}
-    </HTMLElement>
+      appear
+      <HTMLElement
+        {...{
+          id,
+          className: mergedClasses,
+          style,
+          htmlElement,
+          htmlAttributes: mergedAttributes,
+        }}
+      >
+        {children && children}
+      </HTMLElement>
+    </CSSTransition>
   );
 };
 
 CollapsibleToggler.defaultProps = {
+  disable: false,
   id: undefined,
   className: undefined,
   style: {},
   htmlElement: 'button',
   htmlAttributes: {},
-  disableClick: false,
   children: undefined,
 };
 
 CollapsibleToggler.propTypes = {
+  disable: PropTypes.bool,
   id: PropTypes.string,
   className: PropTypes.string,
   style: PropTypes.shape({}),
@@ -73,7 +93,6 @@ CollapsibleToggler.propTypes = {
     style: PropTypes.shape({}),
     onClick: PropTypes.func,
   }),
-  disableClick: PropTypes.bool,
   children: PropTypes.node,
 };
 

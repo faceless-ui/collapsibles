@@ -11,7 +11,7 @@ const Collapsible = (props) => {
     transTime,
     transCurve,
     children,
-    onClick,
+    onToggle,
   } = props;
 
   const [isOpen, setIsOpen] = useState(openOnInit);
@@ -32,7 +32,7 @@ const Collapsible = (props) => {
       setIgnoreGroupUpdate(true);
       reportToggleToGroup();
     } else setIsOpen(!isOpen);
-    if (typeof onClick === 'function') onClick();
+    if (typeof onToggle === 'function') onToggle();
   };
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const Collapsible = (props) => {
 Collapsible.defaultProps = {
   classPrefix: '',
   openOnInit: false,
-  onClick: undefined,
+  onToggle: undefined,
   transTime: undefined,
   transCurve: undefined,
   children: undefined,
@@ -75,7 +75,7 @@ Collapsible.defaultProps = {
 Collapsible.propTypes = {
   classPrefix: PropTypes.string,
   openOnInit: PropTypes.bool,
-  onClick: PropTypes.func,
+  onToggle: PropTypes.func,
   transTime: PropTypes.number,
   transCurve: PropTypes.string,
   children: PropTypes.node,
