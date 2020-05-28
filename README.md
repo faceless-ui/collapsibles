@@ -1,5 +1,5 @@
-[![NPM](https://img.shields.io/npm/v/@trbl/react-collapsibles)](https://www.npmjs.com/@trbl/react-collapsibles)
-![Bundle Size](https://img.shields.io/bundlephobia/minzip/@trbl/react-collapsibles?label=zipped)
+[![NPM](https://img.shields.io/npm/v/@faceless-ui/collapsibles)](https://www.npmjs.com/@faceless-ui/collapsibles)
+![Bundle Size](https://img.shields.io/bundlephobia/minzip/@faceless-ui/collapsibles?label=zipped)
 [![Supported by TRBL](https://img.shields.io/badge/supported_by-TRBL-black)](https://github.com/trouble)
 
 # React Collapsibles
@@ -18,16 +18,16 @@ Expand and collapse anything, or groups of anything. Accordions, drop-downs, sho
   Applies no visual style, but encourages you to do so. Target any element and any state without additional legwork. [BEM](http://getbem.com/) classes come shipped. Transition classes too, using [react-transition-group](https://reactcommunity.org/react-transition-group/).
 
 - #### Agnostic DOM
-  Take complete control over the DOM. Things like custom markup, accessibility, or additional event handling. Everything beyond core functionality is [extendable](https://www.npmjs.com/package/@trbl/react-html-element).
+  Take complete control over the DOM. Things like custom markup, accessibility, or additional event handling. Everything beyond core functionality is [extendable](https://www.npmjs.com/package/@faceless-ui/html-element).
 
 ## Quick Start
 
 ### Installation
 
 ```bash
-$ npm i @trbl/react-collapsibles
+$ npm i @faceless-ui/collapsibles
 $ # or
-$ yarn add @trbl/react-collapsibles
+$ yarn add @faceless-ui/collapsibles
 ```
 
 ### Composition
@@ -39,7 +39,7 @@ $ yarn add @trbl/react-collapsibles
     Collapsible,
     CollapsibleToggler,
     CollapsibleContent
-  } from '@trbl/react-collapsibles';
+  } from '@faceless-ui/collapsibles';
 
   const App = () => (
     <CollapsibleGroup>
@@ -62,7 +62,7 @@ For working examples, see the [demo app](./demo/App.demo.js).
 ## Demo
 
 ```bash
-$ git clone git@github.com:trouble/react-collapsibles.git
+$ git clone git@github.com:faceless-ui/collapsibles.git
 $ yarn
 $ yarn dev
 $ open http://localhost:3000
@@ -79,8 +79,8 @@ $ open http://localhost:3000
 
 ## Contribution
 
-[Help us,](https://github.com/trouble/.github/blob/master/CONTRIBUTING.md) or let us [help you help us](https://github.com/trouble/.github/blob/master/SUPPORT.md).
+[Help us,](https://github.com/faceless-ui/.github/blob/master/CONTRIBUTING.md) or let us [help you help us](https://github.com/faceless-ui/.github/blob/master/SUPPORT.md).
 
 ## License
 
-[MIT](https://github.com/trouble/react-collapsibles/blob/master/LICENSE) Copyright (c) TRBL, LLC
+[MIT](https://github.com/faceless-ui/collapsibles/blob/master/LICENSE) Copyright (c) TRBL, LLC

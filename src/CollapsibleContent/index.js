@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AnimateHeight from 'react-animate-height';
-import HTMLElement from '@trbl/react-html-element';
+import HTMLElement from '@faceless-ui/html-element';
 import { useCollapsible } from '../Collapsible/context';
 
 const CollapsibleContent = (props) => {

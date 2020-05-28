@@ -1,8 +1,8 @@
 {
-  "name": "@trbl/react-collapsibles",
+  "name": "@faceless-ui/collapsibles",
   "version": "0.1.0",
   "main": "dist/build.bundle.js",
-  "repository": "git@github.com:trouble/react-collapsibles.git",
+  "repository": "git@github.com:faceless-ui/collapsibles.git",
   "description": "Now you see it, now you don't.",
   "author": "<dev@trbl.design>",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "react-dom": "^16.8.0"
   },
   "dependencies": {
-    "@trbl/react-html-element": "^1.0.3",
+    "@faceless-ui/html-element": "^1.0.3",
     "prop-types": "^15.7.2",
     "react-animate-height": "^2.0.16",
     "react-transition-group": "^4.3.0"

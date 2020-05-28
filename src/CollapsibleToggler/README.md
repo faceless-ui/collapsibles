@@ -8,7 +8,7 @@ Nest anywhere within a [Collapsible](../Collapsible/README.md) to control the ne
 
 ```jsx
   import React from 'react';
-  import { Collapsible } from '@trbl/react-collapsible';
+  import { Collapsible } from '@faceless-ui/collapsible';
 
   export default SomeComponent = () => (
     <Collapsible>
@@ -41,7 +41,7 @@ Customize the markup, add additional click behavior, anything you want.
 
 ```jsx
   import React from 'react';
-  import { Collapsible } from '@trbl/react-collapsible';
+  import { Collapsible } from '@faceless-ui/collapsible';
 
   export default SomeComponent = () => (
     <Collapsible
