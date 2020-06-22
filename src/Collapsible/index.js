@@ -54,7 +54,7 @@ const Collapsible = (props) => {
         openOnInit,
         isOpen,
         handleClick,
-        transTime: typeof transTime === 'number' ? transTime : groupTransTime,
+        transTime: (typeof transTime === 'number' && transTime) || (typeof transTime === 'number' && groupTransTime) || 0,
         transCurve: transCurve || groupTransCurve,
       }}
     >
