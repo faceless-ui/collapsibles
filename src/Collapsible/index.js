@@ -46,19 +46,19 @@ const Collapsible = (props) => {
     }
   }, [groupToggleCount, prevGroupToggleCount, isOpen, ignoreGroupUpdate]);
 
+  const context = {
+    classPrefix,
+    rootClass: `${classPrefix || groupClassPrefix || defaultClassPrefix}__collapsible`,
+    openOnInit,
+    isOpen,
+    handleClick,
+    transTime: (typeof transTime === 'number' && transTime) || (typeof transTime === 'number' && groupTransTime) || 0,
+    transCurve: transCurve || groupTransCurve,
+  };
+
   return (
-    <CollapsibleContext.Provider
-      value={{
-        classPrefix,
-        rootClass: `${classPrefix || groupClassPrefix || defaultClassPrefix}__collapsible`,
-        openOnInit,
-        isOpen,
-        handleClick,
-        transTime: (typeof transTime === 'number' && transTime) || (typeof transTime === 'number' && groupTransTime) || 0,
-        transCurve: transCurve || groupTransCurve,
-      }}
-    >
-      {children && children}
+    <CollapsibleContext.Provider value={{ ...context }}>
+      {(children && (typeof children === 'function' ? children({ ...context }) : children)) || null}
     </CollapsibleContext.Provider>
   );
 };

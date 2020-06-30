@@ -8,13 +8,13 @@ Expand and collapse anything, or groups of anything. Accordions, drop-downs, sho
 
 ## Highlights
 
-  - #### Modular
+- #### Modular
   Does not care about the structure of your content. Nest [CollapsibleContent](./src/CollapsibleContent.README.md) or [CollapsibleToggler](./src/CollapsibleToggler/README.md) anywhere as a descendent of [Collapsible](./src/Collapsible/README.md). Wrap [CollapsibleGroup](./src/CollapsibleGroup/README.md) anywhere as an ancestor to control collectively. Retrofit existing components as-is.
 
-  - #### Accessible
+- #### Accessible
   Shipped fully accessible. [CollapsibleContent](./src/CollapsibleContent/README.md#accessibility), [CollapsibleToggler](./src/CollapsibleToggler/README.md#accessibility) strictly follow the [WAI-ARIA](https://www.w3.org/WAI/intro/aria) guidelines on [sections with show/hide functionality](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion). You can also [customize anything](#agnostic-dom).
 
-  - #### Faceless UI
+- #### Faceless UI
   Applies no visual style, but encourages you to do so. Target any element and any state without additional legwork. [BEM](http://getbem.com/) classes come shipped. Transition classes too, using [react-transition-group](https://reactcommunity.org/react-transition-group/).
 
 - #### Agnostic DOM
