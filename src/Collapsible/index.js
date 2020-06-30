@@ -78,7 +78,14 @@ Collapsible.propTypes = {
   onToggle: PropTypes.func,
   transTime: PropTypes.number,
   transCurve: PropTypes.string,
-  children: PropTypes.node,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+    PropTypes.func,
+    PropTypes.arrayOf(
+      PropTypes.node,
+    ),
+  ]),
 };
 
 export default Collapsible;
