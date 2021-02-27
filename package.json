@@ -1,6 +1,6 @@
 {
   "name": "@faceless-ui/collapsibles",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "main": "dist/build.bundle.js",
   "repository": "git@github.com:faceless-ui/collapsibles.git",
   "description": "Now you see it, now you don't.",
