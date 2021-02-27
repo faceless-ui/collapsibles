@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Frame = (props) => {
+const Frame: React.FC = (props) => {
   const { children } = props;
   return (
     <div
@@ -15,14 +14,6 @@ const Frame = (props) => {
       {children && children}
     </div>
   );
-};
-
-Frame.defaultProps = {
-  children: undefined,
-};
-
-Frame.propTypes = {
-  children: PropTypes.node,
 };
 
 export default Frame;

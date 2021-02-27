@@ -1,16 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import HTMLElement from '@faceless-ui/html-element';
 import { CSSTransition } from 'react-transition-group';
-import { useCollapsible } from '../Collapsible/context';
+import useCollapsible from '../useCollapsible';
+import { Props } from './types';
 
-const CollapsibleToggler = (props) => {
+const CollapsibleToggler: React.FC<Props> = (props) => {
   const {
     id,
     className,
     style,
-    htmlElement,
-    htmlAttributes,
+    htmlElement = 'button',
+    htmlAttributes = {},
     disable,
     children,
   } = props;
@@ -39,6 +38,8 @@ const CollapsibleToggler = (props) => {
     },
   };
 
+  const Tag = htmlElement as React.ElementType;
+
   return (
     <CSSTransition
       timeout={transTime}
@@ -55,44 +56,18 @@ const CollapsibleToggler = (props) => {
         exitDone: `${baseClass}--exitDone`,
       }}
     >
-      <HTMLElement
+      <Tag
         {...{
           id,
           className: mergedClasses,
           style,
-          htmlElement,
-          htmlAttributes: mergedAttributes,
+          ...mergedAttributes,
         }}
       >
         {children && children}
-      </HTMLElement>
+      </Tag>
     </CSSTransition>
   );
-};
-
-CollapsibleToggler.defaultProps = {
-  disable: false,
-  id: undefined,
-  className: undefined,
-  style: {},
-  htmlElement: 'button',
-  htmlAttributes: {},
-  children: undefined,
-};
-
-CollapsibleToggler.propTypes = {
-  disable: PropTypes.bool,
-  id: PropTypes.string,
-  className: PropTypes.string,
-  style: PropTypes.shape({}),
-  htmlElement: PropTypes.string,
-  htmlAttributes: PropTypes.shape({
-    id: PropTypes.string,
-    className: PropTypes.string,
-    style: PropTypes.shape({}),
-    onClick: PropTypes.func,
-  }),
-  children: PropTypes.node,
 };
 
 export default CollapsibleToggler;

@@ -3,7 +3,7 @@ import { CollapsibleGroup, Collapsible, CollapsibleToggler, CollapsibleContent }
 import PrintContext from './PrintContext';
 import Background from './Background';
 
-const CollapsibleGroupDemo = () => (
+const CollapsibleGroupDemo: React.FC = () => (
   <Fragment>
     <Background>
       <CollapsibleGroup

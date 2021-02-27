@@ -1,9 +1,13 @@
 import React, { Fragment } from 'react';
-import { Collapsible, CollapsibleToggler, CollapsibleContent } from '../src'; // swap '../src' for '../dist/build.bundle' to test production
+import {
+  Collapsible,
+  CollapsibleToggler,
+  CollapsibleContent,
+} from '../src'; // swap '../src' for '../dist/build.bundle' to test production
 import PrintContext from './PrintContext';
 import Background from './Background';
 
-const CollapsibleDemo = () => (
+const CollapsibleDemo: React.FC = () => (
   <Fragment>
     <Background>
       <Collapsible>
@@ -21,7 +25,6 @@ const CollapsibleDemo = () => (
       <Collapsible
         transTime={250}
         transCurve="ease-in"
-        onClick={() => console.log('hi collapsible')} // eslint-disable-line no-console
         classPrefix="demo"
         openOnInit
       >

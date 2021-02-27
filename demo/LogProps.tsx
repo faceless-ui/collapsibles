@@ -1,4 +1,6 @@
 import React from 'react';
+import { ICollapsibleContext } from '../src/Collapsible/Context/types';
+import { ICollapsibleGroupContext } from '../src/CollapsibleGroup/Context/types';
 
 const filterObject = () => {
   const seen = new WeakSet();
@@ -22,7 +24,9 @@ const filterObject = () => {
   };
 };
 
-const LogProps = (props) => (
+type Props = ICollapsibleContext | ICollapsibleGroupContext
+
+const LogProps: React.FC<Props> = (props) => (
   <code>
     <pre>
       {JSON.stringify(props, filterObject(), 2)}

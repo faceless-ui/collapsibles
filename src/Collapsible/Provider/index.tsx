@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import defaultClassPrefix from '../defaultClassPrefix';
-import CollapsibleContext from './context';
-import { useCollapsibleGroup } from '../CollapsibleGroup/context';
+import defaultClassPrefix from '../../defaultClassPrefix';
+import CollapsibleContext from '../Context';
+import useCollapsibleGroup from '../../CollapsibleGroup/useCollapsibleGroup';
+import { Props } from './types';
 
-const Collapsible = (props) => {
+const Collapsible: React.FC<Props> = (props) => {
   const {
     openOnInit,
     classPrefix,
@@ -16,7 +16,7 @@ const Collapsible = (props) => {
 
   const [isOpen, setIsOpen] = useState(openOnInit);
   const [ignoreGroupUpdate, setIgnoreGroupUpdate] = useState(false);
-  const [prevGroupToggleCount, setPrevGroupToggleCount] = useState(false);
+  const [prevGroupToggleCount, setPrevGroupToggleCount] = useState(0);
 
   const {
     reportToggleToGroup,
@@ -54,6 +54,7 @@ const Collapsible = (props) => {
     handleClick,
     transTime: (typeof transTime === 'number' && transTime) || (typeof transTime === 'number' && groupTransTime) || 0,
     transCurve: transCurve || groupTransCurve,
+    onToggle,
   };
 
   return (
@@ -61,31 +62,6 @@ const Collapsible = (props) => {
       {(children && (typeof children === 'function' ? children({ ...context }) : children)) || null}
     </CollapsibleContext.Provider>
   );
-};
-
-Collapsible.defaultProps = {
-  classPrefix: '',
-  openOnInit: false,
-  onToggle: undefined,
-  transTime: undefined,
-  transCurve: undefined,
-  children: undefined,
-};
-
-Collapsible.propTypes = {
-  classPrefix: PropTypes.string,
-  openOnInit: PropTypes.bool,
-  onToggle: PropTypes.func,
-  transTime: PropTypes.number,
-  transCurve: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.node,
-    PropTypes.func,
-    PropTypes.arrayOf(
-      PropTypes.node,
-    ),
-  ]),
 };
 
 export default Collapsible;

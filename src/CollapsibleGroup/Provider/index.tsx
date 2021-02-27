@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import CollapsibleGroupContext from './context';
+import { Props } from './types';
+import CollapsibleGroupContext from '../Context';
 
-const CollapsibleGroup = (props) => {
+const CollapsibleGroup: React.FC<Props> = (props) => {
   const [toggleCount, setToggleCount] = useState(0);
 
   const {
@@ -27,22 +27,6 @@ const CollapsibleGroup = (props) => {
       {children && children}
     </CollapsibleGroupContext.Provider>
   );
-};
-
-CollapsibleGroup.defaultProps = {
-  classPrefix: undefined,
-  transTime: undefined,
-  transCurve: undefined,
-  allowMultiple: false,
-  children: undefined,
-};
-
-CollapsibleGroup.propTypes = {
-  classPrefix: PropTypes.string,
-  transTime: PropTypes.number,
-  transCurve: PropTypes.string,
-  allowMultiple: PropTypes.bool,
-  children: PropTypes.node,
 };
 
 export default CollapsibleGroup;

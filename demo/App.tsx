@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import CollapsibleDemo from './Collapsible.demo';
 import CollapsibleGroupDemo from './CollapsibleGroup.demo';
 
-const AppDemo = () => (
+const AppDemo: React.FC = () => (
   <Fragment>
     <CollapsibleDemo />
     <CollapsibleGroupDemo />
