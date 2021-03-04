@@ -2,6 +2,7 @@
   "name": "@faceless-ui/collapsibles",
   "version": "1.0.0",
   "main": "dist/build.bundle.js",
+  "types": "dist/index.d.ts",
   "repository": "git@github.com:faceless-ui/collapsibles.git",
   "description": "Now you see it, now you don't.",
   "author": "<dev@trbl.design>",
@@ -71,7 +72,6 @@
     }
   },
   "files": [
-    "dist/build.bundle.js",
-    "dist/build.bundle.js.map"
+    "dist"
   ]
 }

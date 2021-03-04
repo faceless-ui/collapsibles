@@ -18,7 +18,7 @@ Expand and collapse anything, or groups of anything. Accordions, drop-downs, sho
   Applies no visual style, but encourages you to do so. Target any element and any state without additional legwork. [BEM](http://getbem.com/) classes come shipped. Transition classes too, using [react-transition-group](https://reactcommunity.org/react-transition-group/).
 
 - #### Agnostic DOM
-  Take complete control over the DOM. Things like custom markup, accessibility, or additional event handling. Everything beyond core functionality is [extendable](https://www.npmjs.com/package/@faceless-ui/html-element).
+  Take complete control over the DOM. Things like custom markup, accessibility, or additional event handling. Everything beyond core functionality is extendable.
 
 ## Quick Start
 
