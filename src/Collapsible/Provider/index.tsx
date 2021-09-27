@@ -52,7 +52,7 @@ const Collapsible: React.FC<Props> = (props) => {
     openOnInit,
     isOpen,
     handleClick,
-    transTime: (typeof transTime === 'number' && transTime) || (typeof transTime === 'number' && groupTransTime) || 0,
+    transTime: (typeof transTime === 'number' && transTime) || (typeof groupTransTime === 'number' && groupTransTime) || 0,
     transCurve: transCurve || groupTransCurve,
     onToggle,
   };
