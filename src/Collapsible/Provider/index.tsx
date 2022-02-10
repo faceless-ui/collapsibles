@@ -12,11 +12,16 @@ const Collapsible: React.FC<Props> = (props) => {
     transCurve,
     children,
     onToggle,
+    open: openFromProps,
   } = props;
 
   const [isOpen, setIsOpen] = useState(openOnInit);
   const [ignoreGroupUpdate, setIgnoreGroupUpdate] = useState(false);
   const [prevGroupToggleCount, setPrevGroupToggleCount] = useState(0);
+
+  useEffect(() => {
+    setIsOpen(openFromProps);
+  }, [openFromProps]);
 
   const {
     reportToggleToGroup,

@@ -1,7 +1,8 @@
 export type Props = {
-  openOnInit?: boolean,
-  classPrefix?: string,
-  transTime?: number,
-  transCurve?: string,
-  onToggle?: () => void,
+  openOnInit?: boolean
+  classPrefix?: string
+  transTime?: number
+  transCurve?: string
+  onToggle?: () => void
+  open?: boolean
 }
