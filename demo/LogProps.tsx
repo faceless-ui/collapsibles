@@ -1,10 +1,10 @@
 import React from 'react';
-import { ICollapsibleContext } from '../src/Collapsible/Context/types';
-import { ICollapsibleGroupContext } from '../src/CollapsibleGroup/Context/types';
+import { ICollapsibleContext } from '../src/Collapsible/Context';
+import { ICollapsibleGroupContext } from '../src/CollapsibleGroup/Context';
 
 const filterObject = () => {
   const seen = new WeakSet();
-  return (key, value) => {
+  return (key: string, value: string) => {
     if (typeof value === 'object' && value !== null) {
       if (seen.has(value)) return '[Circle]';
       seen.add(value);
@@ -24,9 +24,7 @@ const filterObject = () => {
   };
 };
 
-type Props = ICollapsibleContext | ICollapsibleGroupContext
-
-const LogProps: React.FC<Props> = (props) => (
+const LogProps: React.FC<ICollapsibleContext | ICollapsibleGroupContext | undefined> = (props) => (
   <code>
     <pre>
       {JSON.stringify(props, filterObject(), 2)}

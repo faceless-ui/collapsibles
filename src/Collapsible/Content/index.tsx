@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { CSSProperties, ElementType } from 'react';
 import AnimateHeight from 'react-animate-height';
 import useCollapsible from '../useCollapsible';
-import { Props } from './types';
 
-const CollapsibleContent: React.FC<Props> = (props) => {
+const CollapsibleContent: React.FC<{
+  id?: string
+  className?: string
+  style?: CSSProperties
+  htmlElement?: ElementType
+  htmlAttributes?: {
+    [key: string]: unknown
+  }
+  children?: React.ReactNode
+}> = (props) => {
   const {
     id,
     className,

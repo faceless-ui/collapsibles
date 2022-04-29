@@ -1,6 +1,8 @@
 import React from 'react';
 
-const Frame: React.FC = (props) => {
+const Frame: React.FC<{
+  children: React.ReactNode;
+}> = (props) => {
   const { children } = props;
   return (
     <div

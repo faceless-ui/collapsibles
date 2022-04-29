@@ -2,7 +2,19 @@ import React, { useState, useEffect } from 'react';
 import defaultClassPrefix from '../../defaultClassPrefix';
 import CollapsibleContext from '../Context';
 import useCollapsibleGroup from '../../CollapsibleGroup/useCollapsibleGroup';
-import { Props } from './types';
+import { ICollapsibleContext } from '../Context';
+
+export type ChildFunction = (context: ICollapsibleContext) => React.ReactNode; // eslint-disable-line no-unused-vars
+
+export type Props = {
+  openOnInit?: boolean
+  classPrefix?: string
+  transTime?: number
+  transCurve?: string
+  onToggle?: () => void
+  open?: boolean
+  children: React.ReactNode | ChildFunction
+}
 
 const Collapsible: React.FC<Props> = (props) => {
   const {
@@ -15,7 +27,7 @@ const Collapsible: React.FC<Props> = (props) => {
     open: openFromProps,
   } = props;
 
-  const [isOpen, setIsOpen] = useState(openOnInit);
+  const [isOpen, setIsOpen] = useState<boolean | undefined>(openOnInit);
   const [ignoreGroupUpdate, setIgnoreGroupUpdate] = useState(false);
   const [prevGroupToggleCount, setPrevGroupToggleCount] = useState(0);
 
@@ -51,7 +63,7 @@ const Collapsible: React.FC<Props> = (props) => {
     }
   }, [groupToggleCount, prevGroupToggleCount, isOpen, ignoreGroupUpdate]);
 
-  const context = {
+  const context: ICollapsibleContext = {
     classPrefix,
     rootClass: `${classPrefix || groupClassPrefix || defaultClassPrefix}__collapsible`,
     openOnInit,
@@ -63,7 +75,9 @@ const Collapsible: React.FC<Props> = (props) => {
   };
 
   return (
-    <CollapsibleContext.Provider value={{ ...context }}>
+    <CollapsibleContext.Provider
+      value={context}
+    >
       {(children && (typeof children === 'function' ? children({ ...context }) : children)) || null}
     </CollapsibleContext.Provider>
   );

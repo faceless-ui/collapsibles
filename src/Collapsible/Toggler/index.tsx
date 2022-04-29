@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { CSSProperties, ElementType } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import useCollapsible from '../useCollapsible';
-import { Props } from './types';
 
-const CollapsibleToggler: React.FC<Props> = (props) => {
+const CollapsibleToggler: React.FC<{
+  disable?: boolean
+  id?: string
+  className?: string
+  style?: CSSProperties
+  htmlElement?: ElementType
+  htmlAttributes?: {
+    [key: string]: unknown
+  }
+  children?: React.ReactNode
+}> = (props) => {
   const {
     id,
     className,

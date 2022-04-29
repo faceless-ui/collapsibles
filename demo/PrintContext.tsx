@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCollapsible, useCollapsibleGroup } from '../src';
-import { ICollapsibleContext } from '../src/Collapsible/Context/types';
-import { ICollapsibleGroupContext } from '../src/CollapsibleGroup/Context/types';
+import { ICollapsibleContext } from '../src/Collapsible/Context';
+import { ICollapsibleGroupContext } from '../src/CollapsibleGroup/Context';
 import LogProps from './LogProps';
 
 type Props = {
@@ -14,11 +14,15 @@ const PrintContext: React.FC<Props> = (props) => {
   const collapsibleContext = useCollapsible();
   const collapsibleGroupContext = useCollapsibleGroup();
 
-  let contextToPrint: ICollapsibleContext | ICollapsibleGroupContext;
+  let contextToPrint: ICollapsibleContext | ICollapsibleGroupContext | undefined;
   if (context === 'collapsible') contextToPrint = collapsibleContext;
   if (context === 'collapsibleGroup') contextToPrint = collapsibleGroupContext;
 
-  return <LogProps {...contextToPrint} />;
+  if (contextToPrint) {
+    return <LogProps {...contextToPrint} />
+  }
+
+  return null;
 };
 
 export default PrintContext;
