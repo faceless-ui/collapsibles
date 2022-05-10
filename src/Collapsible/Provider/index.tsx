@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import defaultClassPrefix from '../../defaultClassPrefix';
 import CollapsibleContext from '../Context';
 import useCollapsibleGroup from '../../CollapsibleGroup/useCollapsibleGroup';
 import { ICollapsibleContext } from '../Context';
+
+export const collapsibleBaseClass = 'collapsible';
 
 export type ChildFunction = (context: ICollapsibleContext) => React.ReactNode; // eslint-disable-line no-unused-vars
 
@@ -32,7 +33,9 @@ const Collapsible: React.FC<Props> = (props) => {
   const [prevGroupToggleCount, setPrevGroupToggleCount] = useState(0);
 
   useEffect(() => {
-    setIsOpen(openFromProps);
+    if (openFromProps !== undefined) {
+      setIsOpen(openFromProps);
+    }
   }, [openFromProps]);
 
   const {
@@ -63,9 +66,11 @@ const Collapsible: React.FC<Props> = (props) => {
     }
   }, [groupToggleCount, prevGroupToggleCount, isOpen, ignoreGroupUpdate]);
 
+  const prefixToUse = classPrefix || groupClassPrefix;
+
   const context: ICollapsibleContext = {
     classPrefix,
-    rootClass: `${classPrefix || groupClassPrefix || defaultClassPrefix}__collapsible`,
+    rootClass: prefixToUse ? `${prefixToUse}__${collapsibleBaseClass}` : collapsibleBaseClass,
     openOnInit,
     isOpen,
     handleClick,

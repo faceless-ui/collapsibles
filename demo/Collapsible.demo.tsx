@@ -20,7 +20,6 @@ const CollapsibleDemo: React.FC = () => (
         </CollapsibleContent>
       </Collapsible>
     </Background>
-
     <Background>
       <Collapsible
         transTime={250}
@@ -65,7 +64,6 @@ const CollapsibleDemo: React.FC = () => (
         </article>
       </Collapsible>
     </Background>
-
   </Fragment>
 );
 
