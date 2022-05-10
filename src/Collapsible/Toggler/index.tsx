@@ -1,26 +1,21 @@
-import React, { CSSProperties, ElementType } from 'react';
+import React, { ElementType, HTMLProps, MouseEvent } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import useCollapsible from '../useCollapsible';
 
-const CollapsibleToggler: React.FC<{
+export interface CollapsibleTogglerProps extends HTMLProps<HTMLElement> {
   disable?: boolean
-  id?: string
-  className?: string
-  style?: CSSProperties
   htmlElement?: ElementType
-  htmlAttributes?: {
-    [key: string]: unknown
-  }
   children?: React.ReactNode
-}> = (props) => {
+}
+
+const CollapsibleToggler: React.FC<CollapsibleTogglerProps> = (props) => {
   const {
-    id,
     className,
-    style,
     htmlElement = 'button',
-    htmlAttributes = {},
     disable,
     children,
+    onClick,
+    ...rest
   } = props;
 
   const {
@@ -40,10 +35,10 @@ const CollapsibleToggler: React.FC<{
   ].filter(Boolean).join(' ');
 
   const mergedAttributes = {
-    ...htmlAttributes,
-    onClick: () => {
+    ...rest,
+    onClick: (e: MouseEvent<HTMLElement>) => {
       if (!disable) handleClick();
-      if (typeof htmlAttributes.onClick === 'function') htmlAttributes.onClick();
+      if (typeof onClick === 'function') onClick(e);
     },
   };
 
@@ -66,12 +61,8 @@ const CollapsibleToggler: React.FC<{
       }}
     >
       <Tag
-        {...{
-          id,
-          className: mergedClasses,
-          style,
-          ...mergedAttributes,
-        }}
+        {...mergedAttributes}
+        className={mergedClasses}
       >
         {children && children}
       </Tag>

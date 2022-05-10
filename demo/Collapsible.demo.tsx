@@ -32,9 +32,7 @@ const CollapsibleDemo: React.FC = () => (
           <div>
             <span>
               <CollapsibleToggler
-                htmlAttributes={{
-                  onClick: () => console.log('hi toggler'), // eslint-disable-line no-console
-                }}
+                onClick={() => console.log('hi toggler')} // eslint-disable-line no-console
               >
                 <span>
                   <span>

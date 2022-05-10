@@ -1,24 +1,18 @@
-import React, { CSSProperties, ElementType } from 'react';
+import React, { ElementType, HTMLProps } from 'react';
 import AnimateHeight from 'react-animate-height';
 import useCollapsible from '../useCollapsible';
 
-const CollapsibleContent: React.FC<{
-  id?: string
-  className?: string
-  style?: CSSProperties
+export interface CollapsibleContentProps extends HTMLProps<HTMLElement> {
   htmlElement?: ElementType
-  htmlAttributes?: {
-    [key: string]: unknown
-  }
   children?: React.ReactNode
-}> = (props) => {
+}
+
+const CollapsibleContent: React.FC<CollapsibleContentProps> = (props) => {
   const {
-    id,
     className,
-    style,
     htmlElement = 'div',
-    htmlAttributes = {},
     children,
+    ...rest
   } = props;
 
   const {
@@ -40,12 +34,8 @@ const CollapsibleContent: React.FC<{
 
   return (
     <Tag
-      {...{
-        id,
-        className: mergedClasses,
-        style,
-        ...htmlAttributes,
-      }}
+      {...rest}
+      className={mergedClasses}
     >
       <AnimateHeight
         height={isOpen ? 'auto' : 0}
