@@ -11,10 +11,11 @@ export interface CollapsibleTogglerProps extends HTMLProps<HTMLElement> {
 const CollapsibleToggler: React.FC<CollapsibleTogglerProps> = (props) => {
   const {
     className,
-    htmlElement = 'button',
+    htmlElement: Tag = 'button',
     disable,
     children,
     onClick,
+    type: typeFromProps,
     ...rest
   } = props;
 
@@ -34,15 +35,17 @@ const CollapsibleToggler: React.FC<CollapsibleTogglerProps> = (props) => {
     className,
   ].filter(Boolean).join(' ');
 
+  let typeToUse: string | undefined = typeFromProps;
+  if (!typeFromProps && Tag === 'button') typeToUse = 'button';
+
   const mergedAttributes = {
+    type: typeToUse,
     ...rest,
     onClick: (e: MouseEvent<HTMLElement>) => {
       if (!disable) handleClick();
       if (typeof onClick === 'function') onClick(e);
     },
   };
-
-  const Tag = htmlElement as React.ElementType;
 
   return (
     <CSSTransition

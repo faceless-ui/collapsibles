@@ -10,7 +10,7 @@ export interface CollapsibleContentProps extends HTMLProps<HTMLElement> {
 const CollapsibleContent: React.FC<CollapsibleContentProps> = (props) => {
   const {
     className,
-    htmlElement = 'div',
+    htmlElement: Tag = 'div',
     children,
     ...rest
   } = props;
@@ -29,8 +29,6 @@ const CollapsibleContent: React.FC<CollapsibleContentProps> = (props) => {
     isOpen && `${baseClass}--is-open`,
     className,
   ].filter(Boolean).join(' ');
-
-  const Tag = htmlElement as React.ElementType;
 
   return (
     <Tag
