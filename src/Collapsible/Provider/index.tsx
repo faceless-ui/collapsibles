@@ -14,6 +14,7 @@ export type Props = {
   transCurve?: string
   onToggle?: () => void
   open?: boolean
+  initialHeight?: number
   children: React.ReactNode | ChildFunction
 }
 
@@ -26,6 +27,7 @@ const Collapsible: React.FC<Props> = (props) => {
     children,
     onToggle,
     open: openFromProps,
+    initialHeight = 0
   } = props;
 
   const [isOpen, setIsOpen] = useState<boolean | undefined>(openOnInit);
@@ -77,6 +79,7 @@ const Collapsible: React.FC<Props> = (props) => {
     transTime: (typeof transTime === 'number' && transTime) || (typeof groupTransTime === 'number' && groupTransTime) || 0,
     transCurve: transCurve || groupTransCurve,
     onToggle,
+    initialHeight
   };
 
   return (

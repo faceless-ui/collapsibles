@@ -10,7 +10,7 @@ import Background from './Background';
 const CollapsibleDemo: React.FC = () => (
   <Fragment>
     <Background>
-      <Collapsible>
+      <Collapsible openOnInit>
         <PrintContext context="collapsible" />
         <CollapsibleToggler>
           Collapsible Toggler
@@ -25,7 +25,7 @@ const CollapsibleDemo: React.FC = () => (
         transTime={250}
         transCurve="ease-in"
         classPrefix="demo"
-        openOnInit
+        initialHeight={50}
       >
         <PrintContext context="collapsible" />
         <header>
@@ -48,11 +48,11 @@ const CollapsibleDemo: React.FC = () => (
         <article>
           <aside>
             <div>
-              <CollapsibleContent>
+              <CollapsibleContent style={{}}>
                 <section>
                   <div>
                     <div>
-                      Liberom diampr ornare ris maurisma dictumst
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </div>
                   </div>
                 </section>

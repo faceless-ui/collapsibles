@@ -20,6 +20,7 @@ const CollapsibleContent: React.FC<CollapsibleContentProps> = (props) => {
     transCurve,
     transTime,
     isOpen,
+    initialHeight
   } = useCollapsible();
 
   const baseClass = `${rootClass}__content`;
@@ -36,7 +37,7 @@ const CollapsibleContent: React.FC<CollapsibleContentProps> = (props) => {
       className={mergedClasses}
     >
       <AnimateHeight
-        height={isOpen ? 'auto' : 0}
+        height={isOpen ? 'auto' : initialHeight}
         easing={transCurve || 'linear'}
         duration={transTime || 0}
       >
