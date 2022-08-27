@@ -1,6 +1,5 @@
 [![NPM](https://img.shields.io/npm/v/@faceless-ui/collapsibles)](https://www.npmjs.com/@faceless-ui/collapsibles)
 ![Bundle Size](https://img.shields.io/bundlephobia/minzip/@faceless-ui/collapsibles?label=zipped)
-[![Supported by TRBL](https://img.shields.io/badge/supported_by-TRBL-black)](https://github.com/trouble)
 
 # React Collapsibles
 
