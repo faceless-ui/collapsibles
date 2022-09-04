@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CollapsibleGroupContext from '../Context';
+import CollapsibleGroupContext from './context';
 
 export type CollapsibleGroupProps = {
   classPrefix?: string
