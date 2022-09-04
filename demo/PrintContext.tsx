@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCollapsible, useCollapsibleGroup } from '../src';
-import { ICollapsibleContext } from '../src/Collapsible/Context';
-import { ICollapsibleGroupContext } from '../src/CollapsibleGroup/Context';
+import { ICollapsibleContext } from '../src/Collapsible/Provider/context';
+import { ICollapsibleGroupContext } from '../src/CollapsibleGroup/Provider/context';
 import LogProps from './LogProps';
 
 type Props = {

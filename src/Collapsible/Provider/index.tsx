@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import CollapsibleContext from '../Context';
+import CollapsibleContext, { ICollapsibleContext } from './context';
 import useCollapsibleGroup from '../../CollapsibleGroup/useCollapsibleGroup';
-import { ICollapsibleContext } from '../Context';
 
 export const collapsibleBaseClass = 'collapsible';
 
 export type ChildFunction = (context: ICollapsibleContext) => React.ReactNode; // eslint-disable-line no-unused-vars
 
-export type Props = {
+export type CollapsibleProps = {
   openOnInit?: boolean
   classPrefix?: string
   transTime?: number
@@ -18,7 +17,7 @@ export type Props = {
   children: React.ReactNode | ChildFunction
 }
 
-const Collapsible: React.FC<Props> = (props) => {
+const Collapsible: React.FC<CollapsibleProps> = (props) => {
   const {
     openOnInit,
     classPrefix,
