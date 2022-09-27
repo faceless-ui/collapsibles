@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import CollapsibleDemo from './Collapsible.demo';
 import CollapsibleGroupDemo from './CollapsibleGroup.demo';
 
 const AppDemo: React.FC = () => (
-  <Fragment>
+  <React.StrictMode>
     <CollapsibleDemo />
     <CollapsibleGroupDemo />
-  </Fragment>
+  </React.StrictMode>
 );
 
 export default AppDemo;

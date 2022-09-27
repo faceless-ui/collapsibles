@@ -1,4 +1,4 @@
-import React, { ElementType, HTMLProps, MouseEvent } from 'react';
+import React, { ElementType, HTMLProps, MouseEvent, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import useCollapsible from '../useCollapsible';
 
@@ -18,6 +18,8 @@ const CollapsibleToggler: React.FC<CollapsibleTogglerProps> = (props) => {
     type: typeFromProps,
     ...rest
   } = props;
+
+  const nodeRef = useRef<HTMLElement>(null);
 
   const {
     rootClass,
@@ -62,6 +64,7 @@ const CollapsibleToggler: React.FC<CollapsibleTogglerProps> = (props) => {
         exitActive: `${baseClass}--exitActive`,
         exitDone: `${baseClass}--exitDone`,
       }}
+      nodeRef={nodeRef}
     >
       <Tag
         {...mergedAttributes}
