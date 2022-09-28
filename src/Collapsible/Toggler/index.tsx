@@ -15,7 +15,7 @@ const CollapsibleToggler: React.FC<CollapsibleTogglerProps> = (props) => {
     disable,
     children,
     onClick,
-    type: typeFromProps,
+    type,
     ...rest
   } = props;
 
@@ -26,6 +26,7 @@ const CollapsibleToggler: React.FC<CollapsibleTogglerProps> = (props) => {
     handleClick,
     isOpen,
     transTime,
+    id: idFromContext,
   } = useCollapsible();
 
   const baseClass = `${rootClass}__toggler`;
@@ -37,17 +38,8 @@ const CollapsibleToggler: React.FC<CollapsibleTogglerProps> = (props) => {
     className,
   ].filter(Boolean).join(' ');
 
-  let typeToUse: string | undefined = typeFromProps;
-  if (!typeFromProps && Tag === 'button') typeToUse = 'button';
-
-  const mergedAttributes = {
-    type: typeToUse,
-    ...rest,
-    onClick: (e: MouseEvent<HTMLElement>) => {
-      if (!disable) handleClick();
-      if (typeof onClick === 'function') onClick(e);
-    },
-  };
+  let typeToUse: string | undefined = type;
+  if (!type && Tag === 'button') typeToUse = 'button';
 
   return (
     <CSSTransition
@@ -67,7 +59,17 @@ const CollapsibleToggler: React.FC<CollapsibleTogglerProps> = (props) => {
       nodeRef={nodeRef}
     >
       <Tag
-        {...mergedAttributes}
+        type={typeToUse}
+        aria-expanded={Boolean(isOpen).toString()}
+        // NOTE: this 'aria-owns' attribute should match the ID of the CollapsibleContent
+        aria-owns={`collapsible-content_${idFromContext}`}
+        aria-label="Toggle collapsible"
+        id={`collapsible-toggler_${idFromContext}`}
+        {...rest}
+        onClick={(e: MouseEvent<HTMLElement>) => {
+          if (!disable) handleClick();
+          if (typeof onClick === 'function') onClick(e);
+        }}
         className={mergedClasses}
       >
         {children && children}

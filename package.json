@@ -52,6 +52,7 @@
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "dependencies": {
+    "nanoid": "^4.0.0",
     "react-animate-height": "^2.0.16",
     "react-transition-group": "^4.4.2"
   },
