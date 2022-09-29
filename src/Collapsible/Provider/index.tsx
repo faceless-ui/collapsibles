@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CollapsibleContext, { ICollapsibleContext } from './context';
 import useCollapsibleGroup from '../../CollapsibleGroup/useCollapsibleGroup';
+import { nanoid } from 'nanoid'
 
 export const collapsibleBaseClass = 'collapsible';
 
@@ -15,6 +16,7 @@ export type CollapsibleProps = {
   open?: boolean
   initialHeight?: number
   children: React.ReactNode | ChildFunction
+  id?: string
 }
 
 const Collapsible: React.FC<CollapsibleProps> = (props) => {
@@ -26,12 +28,20 @@ const Collapsible: React.FC<CollapsibleProps> = (props) => {
     children,
     onToggle,
     open: openFromProps,
-    initialHeight = 0
+    initialHeight = 0,
+    id: idFromProps,
   } = props;
 
   const [isOpen, setIsOpen] = useState<boolean | undefined>(openOnInit);
   const [ignoreGroupUpdate, setIgnoreGroupUpdate] = useState(false);
   const [prevGroupToggleCount, setPrevGroupToggleCount] = useState(0);
+
+  // NOTE: the 'aria-owns' and 'aria-labelledby' attributes rely on this matching IDs
+  const [id, setID] = useState(() => idFromProps || nanoid(6));
+
+  useEffect(() => {
+    setID(idFromProps || nanoid(6));
+  }, [idFromProps])
 
   useEffect(() => {
     if (openFromProps !== undefined) {
@@ -78,7 +88,8 @@ const Collapsible: React.FC<CollapsibleProps> = (props) => {
     transTime: (typeof transTime === 'number' && transTime) || (typeof groupTransTime === 'number' && groupTransTime) || 0,
     transCurve: transCurve || groupTransCurve,
     onToggle,
-    initialHeight
+    initialHeight,
+    id
   };
 
   return (

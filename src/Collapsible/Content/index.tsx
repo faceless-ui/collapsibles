@@ -20,7 +20,8 @@ const CollapsibleContent: React.FC<CollapsibleContentProps> = (props) => {
     transCurve,
     transTime,
     isOpen,
-    initialHeight
+    initialHeight,
+    id: idFromContext,
   } = useCollapsible();
 
   const baseClass = `${rootClass}__content`;
@@ -33,6 +34,11 @@ const CollapsibleContent: React.FC<CollapsibleContentProps> = (props) => {
 
   return (
     <Tag
+      // NOTE: the 'aria-owns' attribute of the toggler should match this id
+      id={`collapsible-content_${idFromContext}`}
+      // NOTE: the ID of the CollapsibleToggler should match this 'aria-labelledby' attribute
+      aria-labelledby={`collapsible-toggler_${idFromContext}`}
+      role="region"
       {...rest}
       className={mergedClasses}
     >
