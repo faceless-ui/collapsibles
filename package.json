@@ -53,7 +53,7 @@
   },
   "dependencies": {
     "nanoid": "^4.0.0",
-    "react-animate-height": "^2.0.16",
+    "react-animate-height": "^3.0.4",
     "react-transition-group": "^4.4.2"
   },
   "devDependencies": {
