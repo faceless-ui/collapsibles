@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CollapsibleContext, { ICollapsibleContext } from './context';
 import useCollapsibleGroup from '../../CollapsibleGroup/useCollapsibleGroup';
-import { nanoid } from 'nanoid'
+import { makeID } from '../../makeID';
 
 export const collapsibleBaseClass = 'collapsible';
 
@@ -37,10 +37,10 @@ const Collapsible: React.FC<CollapsibleProps> = (props) => {
   const [prevGroupToggleCount, setPrevGroupToggleCount] = useState(0);
 
   // NOTE: the 'aria-owns' and 'aria-labelledby' attributes rely on this matching IDs
-  const [id, setID] = useState(() => idFromProps || nanoid(6));
+  const [id, setID] = useState(() => idFromProps || makeID(5));
 
   useEffect(() => {
-    setID(idFromProps || nanoid(6));
+    setID(idFromProps || makeID(5));
   }, [idFromProps])
 
   useEffect(() => {
