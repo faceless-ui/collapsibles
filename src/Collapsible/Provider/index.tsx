@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useId } from 'react';
 import CollapsibleContext, { ICollapsibleContext } from './context';
 import useCollapsibleGroup from '../../CollapsibleGroup/useCollapsibleGroup';
-import { makeID } from '../../makeID';
 
 export const collapsibleBaseClass = 'collapsible';
 
@@ -37,11 +36,8 @@ const Collapsible: React.FC<CollapsibleProps> = (props) => {
   const [prevGroupToggleCount, setPrevGroupToggleCount] = useState(0);
 
   // NOTE: the 'aria-owns' and 'aria-labelledby' attributes rely on this matching IDs
-  const [id, setID] = useState(() => idFromProps || makeID(5));
-
-  useEffect(() => {
-    setID(idFromProps || makeID(5));
-  }, [idFromProps])
+  const uniqueID = useId();
+  const id = idFromProps || uniqueID;
 
   useEffect(() => {
     if (openFromProps !== undefined) {
