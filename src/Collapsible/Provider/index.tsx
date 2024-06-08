@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useId } from 'react';
-import CollapsibleContext, { ICollapsibleContext } from './context';
-import useCollapsibleGroup from '../../CollapsibleGroup/useCollapsibleGroup';
+import { CollapsibleContext, ICollapsibleContext } from './context.js';
+import { useCollapsibleGroup } from '../../CollapsibleGroup/useCollapsibleGroup/index.js';
 
 export const collapsibleBaseClass = 'collapsible';
 
@@ -18,7 +18,7 @@ export type CollapsibleProps = {
   id?: string
 }
 
-const Collapsible: React.FC<CollapsibleProps> = (props) => {
+export const Collapsible: React.FC<CollapsibleProps> = (props) => {
   const {
     openOnInit,
     classPrefix,
@@ -96,5 +96,3 @@ const Collapsible: React.FC<CollapsibleProps> = (props) => {
     </CollapsibleContext.Provider>
   );
 };
-
-export default Collapsible;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CollapsibleGroupContext from './context';
+import { CollapsibleGroupContext } from './context.js';
 
 export type CollapsibleGroupProps = {
   classPrefix?: string
@@ -9,7 +9,7 @@ export type CollapsibleGroupProps = {
   children: React.ReactNode
 }
 
-const CollapsibleGroup: React.FC<CollapsibleGroupProps> = (props) => {
+export const CollapsibleGroup: React.FC<CollapsibleGroupProps> = (props) => {
   const [toggleCount, setToggleCount] = useState(0);
 
   const {
@@ -35,5 +35,3 @@ const CollapsibleGroup: React.FC<CollapsibleGroupProps> = (props) => {
     </CollapsibleGroupContext.Provider>
   );
 };
-
-export default CollapsibleGroup;

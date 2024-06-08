@@ -1,11 +1,9 @@
 import { createContext } from 'react';
-import { CollapsibleGroupProps } from "../Provider"
+import type { CollapsibleGroupProps } from "./index.js"
 
 export interface ICollapsibleGroupContext extends Omit<CollapsibleGroupProps, 'children'> {
   toggleCount: number
   reportToggleToGroup: () => void
 }
 
-const CollapsibleGroupContext = createContext<ICollapsibleGroupContext>({} as ICollapsibleGroupContext);
-
-export default CollapsibleGroupContext;
+export const CollapsibleGroupContext = createContext<ICollapsibleGroupContext>({} as ICollapsibleGroupContext);

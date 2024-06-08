@@ -1,7 +1,7 @@
 import React from 'react';
-import { useCollapsible, useCollapsibleGroup } from '../src';
-import { ICollapsibleContext } from '../src/Collapsible/Provider/context';
-import { ICollapsibleGroupContext } from '../src/CollapsibleGroup/Provider/context';
+import { useCollapsible, useCollapsibleGroup } from '@faceless-ui/collapsibles';
+import type { ICollapsibleContext } from '../src/types';
+import type { ICollapsibleGroupContext } from '../src/types';
 import LogProps from './LogProps';
 
 type Props = {

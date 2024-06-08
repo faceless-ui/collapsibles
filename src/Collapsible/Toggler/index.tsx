@@ -1,6 +1,6 @@
 import React, { ElementType, HTMLProps, MouseEvent, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import useCollapsible from '../useCollapsible';
+import { useCollapsible } from '../useCollapsible/index.js';
 
 export interface CollapsibleTogglerProps extends HTMLProps<HTMLElement> {
   disable?: boolean
@@ -8,7 +8,7 @@ export interface CollapsibleTogglerProps extends HTMLProps<HTMLElement> {
   children?: React.ReactNode
 }
 
-const CollapsibleToggler: React.FC<CollapsibleTogglerProps> = (props) => {
+export const CollapsibleToggler: React.FC<CollapsibleTogglerProps> = (props) => {
   const {
     className,
     htmlElement: Tag = 'button',
@@ -77,5 +77,3 @@ const CollapsibleToggler: React.FC<CollapsibleTogglerProps> = (props) => {
     </CSSTransition>
   );
 };
-
-export default CollapsibleToggler;

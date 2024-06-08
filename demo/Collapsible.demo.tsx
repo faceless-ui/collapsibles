@@ -3,7 +3,7 @@ import {
   Collapsible,
   CollapsibleToggler,
   CollapsibleContent,
-} from '../src'; // swap '../src' for '../dist/build.bundle' to test production
+} from '@faceless-ui/collapsibles';
 import PrintContext from './PrintContext';
 import Background from './Background';
 

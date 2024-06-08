@@ -1,7 +1,4 @@
 import { useContext } from 'react';
-import CollapsibleContext from '../Provider/context';
-import { ICollapsibleContext } from '../Provider/context';
+import { CollapsibleContext, type ICollapsibleContext } from '../Provider/context.js';
 
-const useCollapsible = (): ICollapsibleContext => useContext(CollapsibleContext);
-
-export default useCollapsible;
+export const useCollapsible = (): ICollapsibleContext => useContext(CollapsibleContext);

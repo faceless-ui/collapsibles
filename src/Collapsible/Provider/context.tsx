@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { CollapsibleProps } from '.';
+import type { CollapsibleProps } from './index.js';
 
 export interface ICollapsibleContext extends Omit<CollapsibleProps, 'children'> {
   transTime: number // optional in props, so make required
@@ -9,6 +9,4 @@ export interface ICollapsibleContext extends Omit<CollapsibleProps, 'children'> 
   handleClick: () => void
 }
 
-const CollapsibleContext = createContext<ICollapsibleContext>({} as ICollapsibleContext);
-
-export default CollapsibleContext;
+export const CollapsibleContext = createContext<ICollapsibleContext>({} as ICollapsibleContext);
