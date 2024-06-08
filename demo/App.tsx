@@ -1,6 +1,6 @@
 import React from 'react';
-import CollapsibleDemo from './Collapsible.demo';
-import CollapsibleGroupDemo from './CollapsibleGroup.demo';
+import CollapsibleDemo from './Collapsible.demo.js';
+import CollapsibleGroupDemo from './CollapsibleGroup.demo.js';
 
 const AppDemo: React.FC = () => (
   <React.StrictMode>

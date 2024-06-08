@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { CollapsibleGroup, Collapsible, CollapsibleToggler, CollapsibleContent } from '@faceless-ui/collapsibles';
-import PrintContext from './PrintContext';
-import Background from './Background';
+import PrintContext from './PrintContext.js';
+import Background from './Background.js';
 
 const CollapsibleGroupDemo: React.FC = () => (
   <Fragment>

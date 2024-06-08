@@ -1,8 +1,8 @@
 import React from 'react';
 import { useCollapsible, useCollapsibleGroup } from '@faceless-ui/collapsibles';
-import type { ICollapsibleContext } from '../src/types';
-import type { ICollapsibleGroupContext } from '../src/types';
-import LogProps from './LogProps';
+import type { ICollapsibleContext } from '../src/types.js';
+import type { ICollapsibleGroupContext } from '../src/types.js';
+import LogProps from './LogProps.js';
 
 type Props = {
   context: 'collapsible' | 'collapsibleGroup'

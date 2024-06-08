@@ -4,8 +4,8 @@ import {
   CollapsibleToggler,
   CollapsibleContent,
 } from '@faceless-ui/collapsibles';
-import PrintContext from './PrintContext';
-import Background from './Background';
+import PrintContext from './PrintContext.js'
+import Background from './Background.js'
 
 const CollapsibleDemo: React.FC = () => (
   <Fragment>
