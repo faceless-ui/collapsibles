@@ -1,6 +1,6 @@
-export { CollapsibleProps } from './Collapsible/Provider';
-export { ICollapsibleContext } from './Collapsible/Provider/context';
-export { CollapsibleContentProps } from './Collapsible/Content';
-export { CollapsibleTogglerProps } from './Collapsible/Toggler';
-export { ICollapsibleGroupContext } from './CollapsibleGroup/Provider/context';
-export { CollapsibleGroupProps } from './CollapsibleGroup/Provider';
+export type { CollapsibleProps } from './Collapsible/Provider/index.js';
+export type { ICollapsibleContext } from './Collapsible/Provider/context.js';
+export type { CollapsibleContentProps } from './Collapsible/Content/index.js';
+export type { CollapsibleTogglerProps } from './Collapsible/Toggler/index.js';
+export type { ICollapsibleGroupContext } from './CollapsibleGroup/Provider/context.js';
+export type { CollapsibleGroupProps } from './CollapsibleGroup/Provider/index.js';

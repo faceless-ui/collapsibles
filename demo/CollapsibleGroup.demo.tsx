@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import { CollapsibleGroup, Collapsible, CollapsibleToggler, CollapsibleContent } from '../src'; // swap '../src' for '../dist/build.bundle' to test production
-import PrintContext from './PrintContext';
-import Background from './Background';
+import { CollapsibleGroup, Collapsible, CollapsibleToggler, CollapsibleContent } from '@faceless-ui/collapsibles';
+import PrintContext from './PrintContext.js';
+import Background from './Background.js';
 
 const CollapsibleGroupDemo: React.FC = () => (
   <Fragment>

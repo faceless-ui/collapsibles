@@ -1,6 +1,6 @@
 import React from 'react';
-import { ICollapsibleContext } from '../src/Collapsible/Provider/context';
-import { ICollapsibleGroupContext } from '../src/CollapsibleGroup/Provider/context';
+import type { ICollapsibleContext } from '../src/types.js';
+import type { ICollapsibleGroupContext } from '../src/types.js';
 
 const filterObject = () => {
   const seen = new WeakSet();

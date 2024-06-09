@@ -1,13 +1,13 @@
 import React, { ElementType, HTMLProps } from 'react';
 import AnimateHeight from 'react-animate-height';
-import useCollapsible from '../useCollapsible';
+import { useCollapsible } from '../useCollapsible/index.js';
 
 export interface CollapsibleContentProps extends HTMLProps<HTMLElement> {
   htmlElement?: ElementType
   children?: React.ReactNode
 }
 
-const CollapsibleContent: React.FC<CollapsibleContentProps> = (props) => {
+export const CollapsibleContent: React.FC<CollapsibleContentProps> = (props) => {
   const {
     className,
     htmlElement: Tag = 'div',
@@ -52,5 +52,3 @@ const CollapsibleContent: React.FC<CollapsibleContentProps> = (props) => {
     </Tag>
   );
 };
-
-export default CollapsibleContent;
